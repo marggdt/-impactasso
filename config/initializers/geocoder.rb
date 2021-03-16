@@ -1,0 +1,4 @@
+Geocoder.configure(
+  units: :km
+
+)
