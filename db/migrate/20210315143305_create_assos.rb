@@ -1,6 +1,6 @@
-class CreateAssociations < ActiveRecord::Migration[6.0]
+class CreateAssos < ActiveRecord::Migration[6.0]
   def change
-    create_table :associations do |t|
+    create_table :assos do |t|
       t.string :name
       t.text :description
       t.string :localisation

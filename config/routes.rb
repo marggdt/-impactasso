@@ -2,17 +2,17 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  ressources :associations do
-    ressources :missions, only: [:new, :create, :delete]
+  resources :assos do
+    resources :missions, only: [:new, :create, :delete, :index]
   end
 
 
-  ressources :users do
-    ressources :favorites, only: :index
+  resources :users do
+    resources :favorites, only: :index
   end
 
-  ressources :missions, only: :show do
-    ressources :favorites, only: :create
+  resources :missions, only: :show do
+    resources :favorites, only: :create
   end
 
 

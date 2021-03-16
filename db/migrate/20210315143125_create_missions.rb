@@ -3,6 +3,9 @@ class CreateMissions < ActiveRecord::Migration[6.0]
     create_table :missions do |t|
       t.string :name
       t.text :description
+      t.float :latitude
+      t.float :longitude
+      t.string :address
 
       t.timestamps
     end

@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_03_15_153808) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "associations", force: :cascade do |t|
+  create_table "assos", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "localisation"
@@ -35,10 +35,13 @@ ActiveRecord::Schema.define(version: 2021_03_15_153808) do
   create_table "missions", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "association_id", null: false
-    t.index ["association_id"], name: "index_missions_on_association_id"
+    t.bigint "asso_id", null: false
+    t.index ["asso_id"], name: "index_missions_on_asso_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,5 +64,5 @@ ActiveRecord::Schema.define(version: 2021_03_15_153808) do
 
   add_foreign_key "favorites", "missions"
   add_foreign_key "favorites", "users"
-  add_foreign_key "missions", "associations"
+  add_foreign_key "missions", "assos"
 end
