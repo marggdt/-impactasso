@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Asso.delete_all
+
+file_assos_csv = File.join(__dir__, '../data/assos.csv')
+
+sql = <<-SQL
+  COPY public.assos (name, description, address, city, zipcode, longitude, latitude)
+  FROM '#{file_assos_csv}'
+  DELIMITER ','
+  CSV HEADER QUOTE '"'
+SQL
+ActiveRecord::Base.connection.execute(sql)
+
+
+puts "Asso created"
