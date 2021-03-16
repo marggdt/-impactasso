@@ -1,0 +1,42 @@
+.search-form-control {
+  padding-top: 24px;
+  position: relative;
+}
+
+.search-form-control .btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+
+}
+
+.search-form-control .form-control {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: black;
+    height: 3rem;
+
+}
+
+.search-form-control .form-control:focus {
+  outline: none !important;
+}
+
+.btn {
+  padding-top: 27px;
+  color: white;
+}
+
+
+
+.input {
+  overflow: unset;
+  color: white;
+}
+
+.form-control {
+  color: white;
+}

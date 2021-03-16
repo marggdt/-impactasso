@@ -1,5 +1,13 @@
-<div class="container">
-        <input type="text" class="form-control form-search" placeholder="Rechercher une association 🔎" />
-        <ul class="asso_list">
-        </ul>
+<div class="container max-height-100vh">
+
+
+<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Trouver une association" />
+    <button name="button" type="submit" class="btn btn-flat">
+           <i class="fas fa-search"></i>
+    </button>
+  </div>
+<% end %>
+
 </div>
