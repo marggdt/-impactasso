@@ -1,24 +1,14 @@
 class AssosController < ApplicationController
   def index
-   @assos = Asso.all
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR description ILIKE :query"
+      @assos = Asso.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @assos = Asso.limit(10).order("RANDOM()")
+    end
   end
 
   def show
     @asso = Asso.find(params[:id])
-  end
-
-  def new
-    @asso = Asso.new
-  end
-
-  def create
-    @asso = Asso.new(params[:asso])
-    @asso.save
-
-    redirect_to asso_path(@asso)
-  end
-
-  def asso_params
-    params.require(:asso).permit(:name, :description, :address, :zipcode, :city, :longitude, :latitude)
   end
 end

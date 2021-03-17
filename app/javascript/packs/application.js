@@ -34,31 +34,29 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
-  const input = document.querySelector('input');
-  const asso_list = document.querySelector(`.asso_list`)
+//   const input = document.querySelector('input');
+//   const asso_list = document.querySelector(`.asso_list`)
 
-  if (input) { //si je suis sur la search page
-  input.addEventListener('keyup', (event) => {
-    console.log(input.value);
-    const asso_api = `https://entreprise.data.gouv.fr/api/rna/v1/full_text/${input.value}?per_page=30`;
-    fetch(asso_api)
-      .then((response) => response.json())
-      .then((data) => {
-        asso_list.innerHTML = null;
-        data.association.forEach(asso => {
-          const list = `<div class="card"><li>
-          <h1>${asso.titre}</h1>
-          <p>${asso.objet}</p>
-          </li>
-          </div>`;
-          asso_list.insertAdjacentHTML("beforeend", list);
-        });
-      });
+//   if (input) { //si je suis sur la search page
+//   input.addEventListener('keyup', (event) => {
+//     console.log(input.value);
+//     const asso_api = `${input.value}`;
+//     fetch(asso_api)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         asso_list.innerHTML = null;
+//         data.association.forEach(asso => {
+//           const list = `<div class="card"><li>
+//           <h1>${asso.titre}</h1>
+//           <p>${asso.objet}</p>
+//           </li>
+//           </div>`;
+//           asso_list.insertAdjacentHTML("beforeend", list);
+//         });
+//       });
+// })
+//   }
+// });
+//   initMapbox();
+//
 })
-  }
-});
-
-
-  initMapbox();
-})
-

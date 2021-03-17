@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  resources :assos, only: :index
+
 
   resources :assos do
     resources :missions, only: [:new, :create, :delete, :index]
@@ -13,6 +15,12 @@ Rails.application.routes.draw do
 
   resources :missions, only: :show do
     resources :favorites, only: :create
+  end
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :assos, only: [ :index ]
+    end
   end
 
 
