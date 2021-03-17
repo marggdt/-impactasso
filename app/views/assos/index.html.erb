@@ -17,6 +17,8 @@
           <div class="card-body">
             <h4><%= asso.name %></h4>
             <p><%= asso.description %></p>
+            <h5><%= link_to "En savoir plus", asso_path(asso) %></h5>
+
           </div>
         </div>
       <% end %>
