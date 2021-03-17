@@ -1,15 +1,15 @@
 <div class="card">
-  <h1><%= @asso.name %></h1>
-              <h5><%= link_to "ajouter aux favoris" %></h5>
-
-    <p><%= @asso.description %></p>
-    <p><%= @asso.address %></p>
-    <p><%= @asso.zipcode %></p>
-    <p><%= @asso.city %></p>
-    <div class="map">
-      <p><%= @asso.longitude %></p>
-      <p><%= @asso.latitude %></p>
+  <div class="card-body">
+    <h1><%= @asso.name.capitalize %></h1>
+        <p><%= link_to "retour", assos_path %></p>
+      <p><%= @asso.description %></p>
+      <p><%= @asso.address %></p><p><%= @asso.zipcode %></p><p><%= @asso.city%></p>
+    <h2> Nombre de missions en ligne :</h2>
+      <p>ici lister les missions scrappées</p>
   </div>
-  <h1> Nombre de missions en ligne :</h1>
-    <p>ici lister les missions scrappées</p>
+</div>
+ <div class="card-body">
+   <h1>Afficher la map </h1>
+    <p><%= @asso.longitude %></p>
+    <p><%= @asso.latitude %></p>
 </div>

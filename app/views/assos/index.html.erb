@@ -7,18 +7,15 @@
           placeholder: "Trouver une asso"
         %>
       </div>
-
       <%= submit_tag "Rechercher", class: "btn btn-primary " %>
     <% end %>
-
     <div id="assos">
       <% @assos.each do |asso| %>
         <div class="card">
           <div class="card-body">
-            <h4><%= asso.name %></h4>
+            <h4><%= asso.name.capitalize %></h4>
             <p><%= asso.description %></p>
-            <h5><%= link_to "En savoir plus", asso_path(asso) %></h5>
-
+            <p><%= link_to "En savoir plus", asso_path(asso) %></p>
           </div>
         </div>
       <% end %>
