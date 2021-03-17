@@ -6,20 +6,20 @@
   width: 100%;
 }
 
-h1 {
+.home_banner h1 {
   font-family: 'Baloo Chettan 2', cursive;
   font-size: 40px;
   color: white;
 }
 
-h2 {
+.home_banner h2 {
   font-family: 'Baloo Chettan 2', cursive;
   color: white;
   font-size: 1.625rem;
 
 }
 
-span {
+.home_banner span {
   font-family: 'Montserrat';
   font-size: 1.125rem;
   color:white;
@@ -29,4 +29,19 @@ span {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+}
+
+.boutons_home {
+  margin: 5px;
+  text-align: right ;
+}
+
+.bouton1 {
+  z-index: 1;
+  margin: 15px;
+}
+
+.bouton2 {
+  z-index: 2;
+  margin: 15px;
 }

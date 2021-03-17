@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    <h1><%= @asso.name.capitalize %></h1>
+        <p><%= link_to "⬅", assos_path %></p>
+      <p><%= @asso.description %></p>
+      <p><%= @asso.address %> , <%= @asso.zipcode%> - <%= @asso.city%></p>
+    <h4> Missions en ligne :</h4>
+    <ul>
+      <li>ici lister les missions scrappées - link to show de la mission</li>
+      <li>ici lister les missions scrappées - link to show de la mission</li>
+      <li>ici lister les missions scrappées - link to show de la mission</li>
+    <ul>
+  </div>
+</div>
+<div class="card">
+ <div class="card-body">
+   <h1>Map</h1>
+   <h1>🌍</h1>
+    <p><%= @asso.longitude %> - <%= @asso.latitude %></p>
+  </div>
+</div>
