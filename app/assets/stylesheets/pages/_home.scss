@@ -1,5 +1,5 @@
 // Specific CSS for your home-page
-// Specific CSS for your home-page
+
 .home_banner {
   padding: 5rem;
   background-color: black;
@@ -7,12 +7,14 @@
 }
 
 .home_banner h1 {
+
   font-family: 'Baloo Chettan 2', cursive;
   font-size: 40px;
   color: white;
 }
 
 .home_banner h2 {
+
   font-family: 'Baloo Chettan 2', cursive;
   color: white;
   font-size: 1.625rem;
@@ -20,6 +22,7 @@
 }
 
 .home_banner span {
+
   font-family: 'Montserrat';
   font-size: 1.125rem;
   color:white;
@@ -30,6 +33,7 @@
   position: sticky;
   top: 0;
 }
+
 
 .boutons_home {
   margin: 5px;
@@ -45,3 +49,4 @@
   z-index: 2;
   margin: 15px;
 }
+
