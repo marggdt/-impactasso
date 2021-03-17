@@ -4,9 +4,8 @@ class AssosController < ApplicationController
       sql_query = "name ILIKE :query OR description ILIKE :query"
       @assos = Asso.where(sql_query, query: "%#{params[:query]}%")
     else
-      @assos = Asso.limit(10).order("RANDOM()")
+      @assos = Asso.limit(20).order("RANDOM()")
     end
-
     # @markers = @assos.geocoded.map do |asso|
     #   {
     #     lat: asso.latitude,

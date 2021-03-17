@@ -13,9 +13,8 @@
       <% @assos.each do |asso| %>
         <div class="card">
           <div class="card-body">
-            <h4><%= asso.name.capitalize %></h4>
+            <h4><%= link_to asso.name.capitalize, asso_path(asso) %></h4>
             <p><%= asso.description %></p>
-            <p><%= link_to "En savoir plus", asso_path(asso) %></p>
           </div>
         </div>
       <% end %>
