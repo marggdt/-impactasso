@@ -11,7 +11,7 @@ Asso.delete_all
 file_assos_csv = File.join(__dir__, '../data/assos.csv')
 
 sql = <<-SQL
-  COPY public.assos (name, description, address, city, zipcode, longitude, latitude)
+  COPY public.assos (name, description, address, zipcode, city, longitude, latitude)
   FROM '#{file_assos_csv}'
   DELIMITER ','
   CSV HEADER QUOTE '"'
