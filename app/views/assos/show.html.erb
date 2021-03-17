@@ -1,3 +1,15 @@
-<h2><%= @association.name %></h2>
-<p><%= @association.localisation %></p>
-<p><%= @association.description %></p>
+<div class="card">
+  <div class="card-body">
+    <h1><%= @asso.name.capitalize %></h1>
+        <p><%= link_to "retour", assos_path %></p>
+      <p><%= @asso.description %></p>
+      <p><%= @asso.address %></p><p><%= @asso.zipcode %></p><p><%= @asso.city%></p>
+    <h2> Nombre de missions en ligne :</h2>
+      <p>ici lister les missions scrappées</p>
+  </div>
+</div>
+ <div class="card-body">
+   <h1>Afficher la map </h1>
+    <p><%= @asso.longitude %></p>
+    <p><%= @asso.latitude %></p>
+</div>
