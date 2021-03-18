@@ -9,23 +9,28 @@
           <span>Découvre des associations et des missions de bénévolat qui te ressemblent, autour de chez toi!</span>
     </div>
     <div class="boutons_home">
-      <div class="bouton1">
-         <button type="button" class="btn btn-light"><%= link_to "Découvrir les asso", assos_path(@assos)%></button>
+     <%= form_tag assos_path, method: :get do %>
+      <div class="form-group">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Trouver une asso"
+        %>
       </div>
-      <div class="bouton2">
-          <button type="button" class="btn btn-light">Trouver une mission</button>
-      </div>
+      <%= submit_tag "Rechercher", class: "btn btn-primary " %>
+    <% end %>
     </div>
   </div>
 </div>
-<div class="container max-height-100vh">
 <div class="mapbox">
   <h1>Autour de moi </h1>
+
   <div id="map"
     style="width: 100%; height: 600px;"
     data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  </div>
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+
 </div>
 
 
