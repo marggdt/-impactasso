@@ -1,5 +1,5 @@
 class Mission < ApplicationRecord
-  belongs_to :asso
+  belongs_to :asso, dependent: :destroy
   has_many :favorites
 
   geocoded_by :address

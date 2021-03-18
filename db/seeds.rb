@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-Asso.delete_all
 Mission.delete_all
+Asso.delete_all
 
 file_assos_csv = File.join(__dir__, '../data/assos.csv')
 
