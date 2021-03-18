@@ -1,5 +1,61 @@
-// Specific CSS for your home-page
-h1 {
-  font-size: large;
-  text-transform: capitalize;
+.home_banner {
+  padding: 5rem;
+  background-color: black;
+  width: 100%;
+}
+
+.home_banner h1 {
+  font-family: 'Baloo Chettan 2', cursive;
+  font-size: 40px;
+  color: white;
+}
+
+.home_banner h2 {
+  font-family: 'Baloo Chettan 2', cursive;
+  color: white;
+  font-size: 1.625rem;
+
+}
+
+.home_banner span {
+  font-family: 'Montserrat';
+  font-size: 1.125rem;
+  color:white;
+}
+
+// .sticky_header {
+//   position: -webkit-sticky;
+//   position: sticky;
+//   top: 0;
+// }
+
+.boutons_home {
+  margin: 5px;
+  text-align: left ;
+  padding: 5px;
+  margin: 0px 0px 1.25rem 20%;
+  vertical-align: baseline;
+  }
+
+// .bouton1 {
+//   z-index: 1;
+//   margin: 15px;
+//   padding: 5px;
+// }
+
+// .bouton2 {
+//   z-index: 2;
+//   margin: 15px;
+// }
+
+.category_icon {
+  display: inline-block;
+  width: 2.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background: 50% / 100% 100% no-repeat;
+}
+
+ a {
+  font-size: 16px;
 }

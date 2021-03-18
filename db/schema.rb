@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_150252) do
+
+ActiveRecord::Schema.define(version: 2021_03_18_100240) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +25,8 @@ ActiveRecord::Schema.define(version: 2021_03_17_150252) do
     t.string "zipcode"
     t.float "longitude"
     t.float "latitude"
+    t.string "category"
+    t.string "image_url"
   end
 
   create_table "favorites", force: :cascade do |t|

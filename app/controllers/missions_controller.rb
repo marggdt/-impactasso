@@ -1,22 +1,13 @@
 class MissionsController < ApplicationController
-
   def index
-  	@missions = Mission.all
-
-    @markers = @missions.geocoded.map do |mission|
-      {
-        lat: mission.latitude,
-        lng: mission.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { mission: mission })
-      }
-    end
+    @missions = Mission.all
   end
 
   def show
     @mission = Mission.find(params[:id])
   end
 
-def new
+  def new
     @mission = Mission.new
   end
 
@@ -32,5 +23,4 @@ def new
   def mission_params
     params.require(:mission).permit(:name, :address, :description, :longitude, :latitude)
   end
-
 end
