@@ -3,11 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :assos, only: :index
 
-
   resources :assos do
     resources :missions, only: [:new, :create, :delete, :index]
   end
-
 
   resources :users do
     resources :favorites, only: :index

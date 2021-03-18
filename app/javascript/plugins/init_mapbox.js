@@ -1,6 +1,5 @@
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
@@ -26,23 +25,17 @@ const initMapbox = () => {
     });
 
     fitMapToMarkers(map, markers);
-
-    const addMarkersToMap = (map, markers) => {
-      markers.forEach((marker) => {
-        const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
-
-        new mapboxgl.Marker()
-          .setLngLat([marker.lng, marker.lat])
-          .setPopup(popup)
-          .addTo(map);
-      });
-    };
-
-    // const map = new mapboxgl.Map({
-    //   container: 'map',
-    //   style: 'mapbox://styles/pdunleav/cjofefl7u3j3e2sp0ylex3cyb' // <-- use your own!
-    // });
-
   }
+  const addMarkersToMap = (map, markers) => {
+    markers.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
+
+      new mapboxgl.Marker()
+        .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup) // add this
+        .addTo(map);
+    });
+  };
 };
+
 export { initMapbox };

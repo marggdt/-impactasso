@@ -15,8 +15,9 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%# <div class="container max-height-100vh"> %>
+
       <%= yield %>
-    <%# </div> %>
+      <div class="container max-height-100vh">
+    </div>
   </body>
 </html>

@@ -5,4 +5,6 @@ class Asso < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  scope :geocoded, -> { where.not(latitude: nil, longitude: nil) }
 end
