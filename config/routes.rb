@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :assos, only: :index
 
   resources :assos do
-    resources :missions, only: [:new, :create, :delete, :index]
+    resources :missions, only: [:show, :new, :create, :delete, :index]
   end
 
   resources :users do
