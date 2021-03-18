@@ -1,7 +1,35 @@
-<h2><%= @user.first_name %></h2>
-<p><%= @user.last_name %></p>
-<p><%= @user.email %></p>
-<p><%= @user.address %></p>
-<p><%= @user.city %></p>
-<p><%= @user.postal_code %></p>
-<p><%= @user.phone_number %></p>
+<div class="profile-card">
+  <h1>Mon Profil</h1>
+  <div class="user-profil">
+   <div class="first-name">
+      <li><%= @user.first_name %></li>
+    </div>
+    <div class="first-name">
+      <li><%= @user.last_name %></li>
+    </div>
+    <div class="email">
+      <li><%= @user.email %></li>
+    </div>
+    <div class="address">
+      <li><%= @user.address %></li>
+    </div>
+    <div class="city">
+      <li><%= @user.city %></li>
+    </div>
+    <div class="postal-code">
+      <li><%= @user.postal_code %></li>
+    </div>
+    <div class="phone-number">
+      <li><%= @user.phone_number %></li>
+    </div>
+  </div>
+  <div class="card-favorite">
+    <h2>nom </h2>
+    <p>description</p>
+    <p>adresse</p>
+  </div>
+</div>
+
+
+
+
