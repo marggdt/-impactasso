@@ -37,4 +37,29 @@ ActiveRecord::Base.connection.execute(sql)
 
 puts "Mission created"
 
+csv_options = { headers: true, col_sep: ',', liberal_parsing: true }
 
+assos = []
+
+CSV.foreach(file_missions_csv, csv_options) do |row|
+
+  # asso_name = row[5].gsub("Association :", "").strip
+  # found_asso = Asso.where(name: asso_name)
+
+
+  asso_name = row[5].delete_prefix('Association : ')
+  asso_name.squish!
+  asso_name = asso_name.split('-')[0...-1].join('-')
+  asso_name.squish!
+
+  assos << asso_name if asso_name.present?
+
+
+  # if found_asso
+  #   Mission.create(name: asso_name, description: )
+  # end
+
+end
+
+puts assos.uniq.count
+# puts missions
