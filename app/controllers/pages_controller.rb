@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
+    # render layout: 'special'
     @markers = Asso.geocoded.limit(100).map do |asso|
       {
         lat: asso.latitude,

@@ -6,16 +6,13 @@ class AssosController < ApplicationController
     else
       @assos = Asso.limit(20).order("RANDOM()")
     end
-
-    @markers = Asso.geocoded.map do |asso|
-      {
-        lat: asso.latitude,
-        lng: asso.longitude,
-      }
-    end
   end
 
   def show
     @asso = Asso.find(params[:id])
+    @marker = [{
+        lat: @asso.latitude,
+        lng: @asso.longitude,
+      }]
   end
 end
