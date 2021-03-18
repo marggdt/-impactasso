@@ -1,5 +1,6 @@
 class Asso < ApplicationRecord
   has_many :missions
+  
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description, against: [ :name, :description ],
     using: {
@@ -7,4 +8,5 @@ class Asso < ApplicationRecord
     }
 
   scope :geocoded, -> { where.not(latitude: nil, longitude: nil) }
+
 end

@@ -7,7 +7,6 @@ class CreateMissions < ActiveRecord::Migration[6.0]
       t.float :longitude
       t.string :address
 
-      t.timestamps
     end
   end
 end
