@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2021_03_18_100240) do
     t.string "zipcode"
     t.float "longitude"
     t.float "latitude"
-    t.string "category"
     t.string "image_url"
   end
 
