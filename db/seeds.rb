@@ -1,17 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
-
 Mission.delete_all
 Asso.delete_all
-
 file_assos_csv = File.join(__dir__, '../data/assos.csv')
-
 sql = <<-SQL
   COPY public.assos (name, description, address, zipcode, city, longitude, latitude)
   FROM '#{file_assos_csv}'
@@ -20,49 +10,38 @@ sql = <<-SQL
 SQL
 ActiveRecord::Base.connection.execute(sql)
 
+
+
 puts "Asso created"
-
-
-
 file_missions_csv = File.join(__dir__, '../data/missions.csv')
-
-sql = <<-SQL
-  COPY public.missions (web_scraper_order, web_scraper_start_url, title, lieu, type_mission, asso, date_mission, dispo)
-  FROM '#{file_missions_csv}'
-  DELIMITER ','
-  CSV HEADER QUOTE '"'
-SQL
-ActiveRecord::Base.connection.execute(sql)
-
-
 csv_options = { headers: true, col_sep: ',', liberal_parsing: true }
-
 assos = []
 
 CSV.foreach(file_missions_csv, csv_options) do |row|
-
   # asso_name = row[5].gsub("Association :", "").strip
-  # found_asso = Asso.where(name: asso_name)
-
-
   asso_name = row[5].delete_prefix('Association : ')
   asso_name.squish!
   asso_name = asso_name.split('-')[0...-1].join('-')
   asso_name.squish!
-
   assos << asso_name if asso_name.present?
-
-
-  # if found_asso
-  #   Mission.create(name: asso_name, description: )
-  # end
-
+  found_asso = Asso.where("name ILIKE ?", "%#{asso_name}%")
+  found_asso = Asso.where("name ILIKE ?", "%#{asso_name}%")
+  web_scraper_start_url = row[1]
+  lieu = row[3].delete_prefix('Lieu : ')
+  type_mission = row[4].delete_prefix('Type : ')
+  date_mission = row[6].delete_prefix('Date : ')
+  dispo = row[7].delete_prefix('Disponibilité demandée : ')
+  title = row[2]
+  p "============"
+  if  !found_asso.empty? && asso_name.present?
+    m = Mission.create(asso_id: found_asso.first.id, web_scraper_start_url: web_scraper_start_url, lieu: lieu, type_mission: type_mission, date_mission: date_mission, dispo: dispo, title: title)
+    puts "Mission #{m.web_scraper_start_url}, asso: #{m.asso.name}"
+  end
+    p "============"
 end
 
 puts assos.uniq.count
 # puts missions
-
-
 CATEGORIES = {
   foot: "sport",
   tennis: "sport",
@@ -173,6 +152,7 @@ CATEGORIES = {
   skate: "sport",
 }
 
+
 # CATEGORIE_IMAGE = {
 #   sport: "sport.svg",
 #   santé: "sante.svg",
@@ -185,14 +165,14 @@ CATEGORIES = {
 # }
 
 Asso.all.each do |asso|
+
   CATEGORIES.each do |key, value|
     if I18n.transliterate(asso.description).downcase.include?(key.to_s)
       asso.category = value
       asso.save!
     end
   end
-end
-
+end 
 # Asso.all.each do |asso|
 #   if asso.category.nil?
 #     asso.image_url = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw4HBg8NBw4QEBASDQ4NDRcKDw8IEA4SFREWGBcdFRMYKCghJBolJx8TLTEtJSkrOi4uFyszODMsNygtOisBCgoKDg0NDw8PDy0ZFRkrKystKysrKystKystLSsrKysrKysrKysrKysrLSsrKysrLSsrKysrKysrKysrKysrK//AABEIAH4AyAMBIgACEQEDEQH/xAAbAAEBAAMBAQEAAAAAAAAAAAAABQEEBgMCB//EADEQAAIBAgMGBQMDBQAAAAAAAAABAgMRBBIxBSEiQVFhcYGRobETwfEzQnIUMmKCkv/EABgBAQEBAQEAAAAAAAAAAAAAAAACAwEE/8QAHREBAQEBAQACAwAAAAAAAAAAAAECETEhQRITMv/aAAwDAQACEQMRAD8A/RAAelkAAAAAAAAAAADMIupO0Fd8rLM2UaGyZS/XeXtHifrovc5dSeuydTTKTb4fZZjoaWApU1ujf+XEeleEvoSVDdK3D0TI/Y7+LmGrPf53MmaicZNVNb77637mDRIAAAAAAAAAAAAAAAAAAAAAAAAelCi61VRh156Jc2zzKmw4Xc5PklFfP2ROryddk7W/hMJDCwtDXm2t7NoAw9aAAA1MZhI4qO/dLk1r+Dn6tN0qjjPVHVEXbsLVoSWri16fkvF+eJsTQAbIAAAAAAAAAAAAAAAAAAAAAAsbC/Sn/JfBHK2wVw1PGL+SN+O59VwAYtAAAER9vf3U/wDf7FdEjbr4qfhL7FY/py+JQAN2YAAAAAAAAAAAAAAAAAAAAAF3ZMIrCqUVvk3fvZuxCLuy0o0Mqld7pvdlyppO3fxM9+KnqgADJYAABL21CP0FKS33yx899vYqE3bPFQtfR5muq0+53PscviIAD0MwAAAAAAAAAAAAAAAAAAAAAN/BVLV6Un0dKXjfd8r0NA9sO78C5tOHaS09dPQnU7HY6cGvhK39RQU0uz7PmbBg0AABg5/HVM85tfuqZV4RVr+bfsV8bX+jQvHe28sbdXoQK747R0isq7u92/VsvE+02vMAGyAAAAAAAAAAAAAAAAAAAAAAMJ2e7rdGT7oQ+pVjHq0nbuwL2zmnhs0f3Scn2fP3TNxnlQpKjSUIaLS56M899axkAHBO2vJww1465ku6umrruQzpsRRjiKeWpprueVnNThkm0+TafijXF+OI0wADRIAAAAAAAAAAAAAAAAAAANmhgKlbSOVdZcK9NWU8PsuFP9Tjf+WnoTdyOyVGpUZ1nanFvrZbl4vRFXA7N+jUU6r38kluXmUoRUVaKsuVllPozu7VTLIAIUAAAScbs11KjnRe9u7T69mVjB2WzxyzrlqtGdGVqqcfFbn4PmfB1M4KcbTV1zusxoYjZMJ76XC/+kaTc+03KKDYr4KpQ1V11jxfjzNcuXqQAHQAAAAAAAAAAHrhqEsRUy0/F30S6st4XAQw6ulml1kvjofGyaahhYtayu2UDHerbxpIAAh0AAAAAAAAAAAAADQxWz4YhXjwy6xXyjfMXOy8OOWr0ZUKmWevK2jXVdj4LW2Kanh83NW9HyIptm9jOzlAAU4AAD//2Q=="
@@ -204,3 +184,4 @@ end
 
 #   asso.save!
 # end
+
