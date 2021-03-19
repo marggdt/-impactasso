@@ -35,8 +35,6 @@ SQL
 ActiveRecord::Base.connection.execute(sql)
 
 
-puts "Mission created"
-
 csv_options = { headers: true, col_sep: ',', liberal_parsing: true }
 
 assos = []
@@ -112,7 +110,7 @@ CATEGORIES = {
   artiste: "culture",
   theatre: "culture",
   art: "culture",
-  mode: "social",
+  mode: "culture",
   vetements: "social",
   relation: "social",
   internet: "social",
@@ -136,7 +134,7 @@ CATEGORIES = {
   industrie: "alimentaire",
   agricole: "alimentaire",
   denrhe: "alimentaire",
-  alimentation: "alimentataire",
+  alimentation: "alimentaire",
   degustation: "alimentaire",
   animal: "animaux",
   animaux: "animaux",
@@ -150,19 +148,41 @@ CATEGORIES = {
   politique: "culture",
   demographie: "culture",
   demographique: "culture",
-  urbaniste: "culture"
+  urbaniste: "culture",
+  peinture: "art",
+  valeur: "social",
+  commune: "social",
+  chant: "art",
+  chorale: "art",
+  instrument: "art",
+  video: "art",
+  cinema: "art",
+  photo: "art",
+  solidaire: "social",
+  kermesse: "social",
+  seminaire: "politique",
+  spectacle: "art",
+  humanitaire: "social",
+  boxe: "sport",
+  karate: "sport",
+  course: "sport",
+  hockey: "sport",
+  roller: "sport",
+  hockey: "sport",
+  longboard: "sport",
+  skate: "sport",
 }
 
-CATEGORIE_IMAGE = {
-  sport: "https://source.unsplash.com/random",
-  santé: "https://source.unsplash.com/random",
-  education: "https://source.unsplash.com/random",
-  culture: "https://source.unsplash.com/random",
-  social: "https://source.unsplash.com/random",
-  environement: "https://source.unsplash.com/random",
-  animaux: "https://source.unsplash.com/random",
-  alimentaire: "https://source.unsplash.com/random",
-}
+# CATEGORIE_IMAGE = {
+#   sport: "sport.svg",
+#   santé: "sante.svg",
+#   education: "ecucation.svg",
+#   culture: "culture.svg",
+#   social: "social.svg",
+#   environement: "environnement.svg",
+#   animaux: "animaux.svg",
+#   alimentaire: "alimentation.svg",
+# }
 
 Asso.all.each do |asso|
   CATEGORIES.each do |key, value|
@@ -173,14 +193,14 @@ Asso.all.each do |asso|
   end
 end
 
-Asso.all.each do |asso|
-  if asso.category.nil?
-    asso.image_url = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw4HBg8NBw4QEBASDQ4NDRcKDw8IEA4SFREWGBcdFRMYKCghJBolJx8TLTEtJSkrOi4uFyszODMsNygtOisBCgoKDg0NDw8PDy0ZFRkrKystKysrKystKystLSsrKysrKysrKysrKysrLSsrKysrLSsrKysrKysrKysrKysrK//AABEIAH4AyAMBIgACEQEDEQH/xAAbAAEBAAMBAQEAAAAAAAAAAAAABQEEBgMCB//EADEQAAIBAgMGBQMDBQAAAAAAAAABAgMRBBIxBSEiQVFhcYGRobETwfEzQnIUMmKCkv/EABgBAQEBAQEAAAAAAAAAAAAAAAACAwEE/8QAHREBAQEBAQACAwAAAAAAAAAAAAECETEhQRITMv/aAAwDAQACEQMRAD8A/RAAelkAAAAAAAAAAADMIupO0Fd8rLM2UaGyZS/XeXtHifrovc5dSeuydTTKTb4fZZjoaWApU1ujf+XEeleEvoSVDdK3D0TI/Y7+LmGrPf53MmaicZNVNb77637mDRIAAAAAAAAAAAAAAAAAAAAAAAAelCi61VRh156Jc2zzKmw4Xc5PklFfP2ROryddk7W/hMJDCwtDXm2t7NoAw9aAAA1MZhI4qO/dLk1r+Dn6tN0qjjPVHVEXbsLVoSWri16fkvF+eJsTQAbIAAAAAAAAAAAAAAAAAAAAAAsbC/Sn/JfBHK2wVw1PGL+SN+O59VwAYtAAAER9vf3U/wDf7FdEjbr4qfhL7FY/py+JQAN2YAAAAAAAAAAAAAAAAAAAAAF3ZMIrCqUVvk3fvZuxCLuy0o0Mqld7pvdlyppO3fxM9+KnqgADJYAABL21CP0FKS33yx899vYqE3bPFQtfR5muq0+53PscviIAD0MwAAAAAAAAAAAAAAAAAAAAAN/BVLV6Un0dKXjfd8r0NA9sO78C5tOHaS09dPQnU7HY6cGvhK39RQU0uz7PmbBg0AABg5/HVM85tfuqZV4RVr+bfsV8bX+jQvHe28sbdXoQK747R0isq7u92/VsvE+02vMAGyAAAAAAAAAAAAAAAAAAAAAAMJ2e7rdGT7oQ+pVjHq0nbuwL2zmnhs0f3Scn2fP3TNxnlQpKjSUIaLS56M899axkAHBO2vJww1465ku6umrruQzpsRRjiKeWpprueVnNThkm0+TafijXF+OI0wADRIAAAAAAAAAAAAAAAAAAANmhgKlbSOVdZcK9NWU8PsuFP9Tjf+WnoTdyOyVGpUZ1nanFvrZbl4vRFXA7N+jUU6r38kluXmUoRUVaKsuVllPozu7VTLIAIUAAAScbs11KjnRe9u7T69mVjB2WzxyzrlqtGdGVqqcfFbn4PmfB1M4KcbTV1zusxoYjZMJ76XC/+kaTc+03KKDYr4KpQ1V11jxfjzNcuXqQAHQAAAAAAAAAAHrhqEsRUy0/F30S6st4XAQw6ulml1kvjofGyaahhYtayu2UDHerbxpIAAh0AAAAAAAAAAAAADQxWz4YhXjwy6xXyjfMXOy8OOWr0ZUKmWevK2jXVdj4LW2Kanh83NW9HyIptm9jOzlAAU4AAD//2Q=="
-  else
-    CATEGORIE_IMAGE.each do |key, value|
-      asso.image_url = value if asso.category.to_sym == key
-    end
-  end
+# Asso.all.each do |asso|
+#   if asso.category.nil?
+#     asso.image_url = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw4HBg8NBw4QEBASDQ4NDRcKDw8IEA4SFREWGBcdFRMYKCghJBolJx8TLTEtJSkrOi4uFyszODMsNygtOisBCgoKDg0NDw8PDy0ZFRkrKystKysrKystKystLSsrKysrKysrKysrKysrLSsrKysrLSsrKysrKysrKysrKysrK//AABEIAH4AyAMBIgACEQEDEQH/xAAbAAEBAAMBAQEAAAAAAAAAAAAABQEEBgMCB//EADEQAAIBAgMGBQMDBQAAAAAAAAABAgMRBBIxBSEiQVFhcYGRobETwfEzQnIUMmKCkv/EABgBAQEBAQEAAAAAAAAAAAAAAAACAwEE/8QAHREBAQEBAQACAwAAAAAAAAAAAAECETEhQRITMv/aAAwDAQACEQMRAD8A/RAAelkAAAAAAAAAAADMIupO0Fd8rLM2UaGyZS/XeXtHifrovc5dSeuydTTKTb4fZZjoaWApU1ujf+XEeleEvoSVDdK3D0TI/Y7+LmGrPf53MmaicZNVNb77637mDRIAAAAAAAAAAAAAAAAAAAAAAAAelCi61VRh156Jc2zzKmw4Xc5PklFfP2ROryddk7W/hMJDCwtDXm2t7NoAw9aAAA1MZhI4qO/dLk1r+Dn6tN0qjjPVHVEXbsLVoSWri16fkvF+eJsTQAbIAAAAAAAAAAAAAAAAAAAAAAsbC/Sn/JfBHK2wVw1PGL+SN+O59VwAYtAAAER9vf3U/wDf7FdEjbr4qfhL7FY/py+JQAN2YAAAAAAAAAAAAAAAAAAAAAF3ZMIrCqUVvk3fvZuxCLuy0o0Mqld7pvdlyppO3fxM9+KnqgADJYAABL21CP0FKS33yx899vYqE3bPFQtfR5muq0+53PscviIAD0MwAAAAAAAAAAAAAAAAAAAAAN/BVLV6Un0dKXjfd8r0NA9sO78C5tOHaS09dPQnU7HY6cGvhK39RQU0uz7PmbBg0AABg5/HVM85tfuqZV4RVr+bfsV8bX+jQvHe28sbdXoQK747R0isq7u92/VsvE+02vMAGyAAAAAAAAAAAAAAAAAAAAAAMJ2e7rdGT7oQ+pVjHq0nbuwL2zmnhs0f3Scn2fP3TNxnlQpKjSUIaLS56M899axkAHBO2vJww1465ku6umrruQzpsRRjiKeWpprueVnNThkm0+TafijXF+OI0wADRIAAAAAAAAAAAAAAAAAAANmhgKlbSOVdZcK9NWU8PsuFP9Tjf+WnoTdyOyVGpUZ1nanFvrZbl4vRFXA7N+jUU6r38kluXmUoRUVaKsuVllPozu7VTLIAIUAAAScbs11KjnRe9u7T69mVjB2WzxyzrlqtGdGVqqcfFbn4PmfB1M4KcbTV1zusxoYjZMJ76XC/+kaTc+03KKDYr4KpQ1V11jxfjzNcuXqQAHQAAAAAAAAAAHrhqEsRUy0/F30S6st4XAQw6ulml1kvjofGyaahhYtayu2UDHerbxpIAAh0AAAAAAAAAAAAADQxWz4YhXjwy6xXyjfMXOy8OOWr0ZUKmWevK2jXVdj4LW2Kanh83NW9HyIptm9jOzlAAU4AAD//2Q=="
+#   else
+#     CATEGORIE_IMAGE.each do |key, value|
+#       asso.image_url = value if asso.category.to_sym == key
+#     end
+#   end
 
-  asso.save!
-end
+#   asso.save!
+# end
