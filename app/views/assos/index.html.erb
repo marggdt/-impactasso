@@ -16,7 +16,7 @@
         <div class="card">
           <div class="card-body">
             <h2><%= link_to asso.name.capitalize, asso_path(asso)  %></h2>
-            <p><%= asso.description.downcase %></p>
+            <p><%= asso.description.capitalize %></p>
             <%= image_svg(asso) %>
             <h5><%= asso.city %></h5>
           </div>
