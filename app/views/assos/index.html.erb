@@ -11,9 +11,9 @@
       </div>
       <%= submit_tag "Rechercher", class: "btn btn-primary " %>
     <% end %>
-    <div id="assos">
+     <div class="row" id="assos">
       <% @assos.each do |asso| %>
-        <div class="card">
+        <div class="card index">
           <div class="card-body">
             <h2><%= link_to asso.name.capitalize, asso_path(asso)  %></h2>
             <p><%= asso.description.capitalize %></p>
