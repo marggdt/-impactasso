@@ -154,14 +154,14 @@ CATEGORIES = {
 }
 
 CATEGORIE_IMAGE = {
-  sport: "https://source.unsplash.com/random",
-  santé: "https://source.unsplash.com/random",
-  education: "https://source.unsplash.com/random",
-  culture: "https://source.unsplash.com/random",
-  social: "https://source.unsplash.com/random",
-  environement: "https://source.unsplash.com/random",
-  animaux: "https://source.unsplash.com/random",
-  alimentaire: "https://source.unsplash.com/random",
+  sport: "sport.svg",
+  santé: "sante.svg",
+  education: "ecucation.svg",
+  culture: "culture.svg",
+  social: "social.svg",
+  environement: "environnement.svg",
+  animaux: "animaux.svg",
+  alimentaire: "alimentation.svg",
 }
 
 Asso.all.each do |asso|
