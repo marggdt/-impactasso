@@ -7,6 +7,5 @@ class AddColumnsToMission < ActiveRecord::Migration[6.0]
     add_column :missions, :type_mission, :string
     add_column :missions, :date_mission, :string
     add_column :missions, :dispo, :string
-    add_column :missions, :asso, :string
   end
 end

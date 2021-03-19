@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_152704) do
+ActiveRecord::Schema.define(version: 2021_03_19_135719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,11 +36,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_152704) do
   end
 
   create_table "missions", force: :cascade do |t|
-    t.string "name"
     t.text "description"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "address"
     t.text "web_scraper_order"
     t.text "web_scraper_start_url"
     t.string "title"
@@ -48,8 +44,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_152704) do
     t.string "type_mission"
     t.string "date_mission"
     t.string "dispo"
-    t.string "asso"
-    t.bigint "asso_id"
+    t.bigint "asso_id", null: false
     t.index ["asso_id"], name: "index_missions_on_asso_id"
   end
 
