@@ -1,35 +1,19 @@
-<div class="profile-card">
-  <h1>Mon Profil</h1>
-  <div class="user-profil">
-   <div class="first-name">
-      <li><%= @user.first_name %></li>
-    </div>
-    <div class="first-name">
-      <li><%= @user.last_name %></li>
-    </div>
-    <div class="email">
-      <li><%= @user.email %></li>
-    </div>
-    <div class="address">
-      <li><%= @user.address %></li>
-    </div>
-    <div class="city">
-      <li><%= @user.city %></li>
-    </div>
-    <div class="postal-code">
-      <li><%= @user.postal_code %></li>
-    </div>
-    <div class="phone-number">
-      <li><%= @user.phone_number %></li>
-    </div>
+<div class="container max-height-100vh">
+  <div class="card">
+    <h1>Mon Profil 🧑‍💻 </h1>
+    <ul class="user-profil">
+    <%= image_tag('avatar.svg', class: "avatar_profil") %>
+      <p> <strong>Margaux Gaudriot</strong></p>
+      <p> <%= @user.email %> </p>
+      <p> 21 rue des capucins 69001 Lyon</p>
+      <p> 06 84 03 05 83</p>
+      <a> Modifier mes informations </a>
   </div>
-  <div class="card-favorite">
-    <h2>nom </h2>
-    <p>description</p>
-    <p>adresse</p>
+  <div class="card">
+    <h1> Mes favoris ⭐️ </h1>
+    <li> Lien vers la mission </li>
+    <li> Lien vers la mission </li>
+      <li> Lien vers la mission </li>
+      <li> Lien vers la mission </li>
   </div>
 </div>
-
-
-
-

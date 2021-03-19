@@ -1,5 +1,6 @@
 <ul>
   <% @missions.each do |mission| %>
+
     <li><%= mission.asso.name.upcase %></li>
     <li><%= mission.title %></li>
     <li><%= mission.lieu %></li>
@@ -7,7 +8,6 @@
     <li><%= mission.date_mission %></li>
     <li><%= mission.dispo %></li>
     <li><%= mission.web_scraper_start_url %></li>
-
   <% end %>
 </ul>
 

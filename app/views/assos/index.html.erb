@@ -15,12 +15,10 @@
       <% @assos.each do |asso| %>
         <div class="card">
           <div class="card-body">
-            <h3><%= link_to asso.name.capitalize, asso_path(asso)  %></h3>
-            <p><%= asso.description %></p>
-            <img src="<%= asso.image_url %>" class="category_icon " />
-
+            <h2><%= link_to asso.name.capitalize, asso_path(asso)  %></h2>
+            <p><%= asso.description.capitalize %></p>
+            <%= image_svg(asso) %>
             <h5><%= asso.city %></h5>
-
           </div>
         </div>
       <% end %>
