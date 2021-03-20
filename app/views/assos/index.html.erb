@@ -1,27 +1,38 @@
+<div class="container">
+  <div class="form-group">
+              <%= form_tag assos_path, method: :get do %>
+                  <%= text_field_tag :query,
+                    params[:query],
+                    class: "form-control",
+                    placeholder: "Trouver une asso"
+                  %>
+                </div>
+              <%= submit_tag "Rechercher", class: "btn btn-primary " %>
+              <% end %>
 
-  <div class="col-sm-8 offset-sm-2">
+    <div class="main-container">
 
-    <%= form_tag assos_path, method: :get do %>
-      <div class="form-group">
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Trouver une asso"
-        %>
+      <div class="cards col-6">
+
+            <% @assos.each do |asso| %>
+            <%= link_to asso_path(asso)do %>
+                <div class="card">
+                  <h1><%=asso.name.capitalize.truncate(50)%></h1>
+                  <p><%= asso.description.capitalize.truncate(150) %></p>
+                  <%= image_svg(asso) %>
+                  <h2><%= asso.city %></h2>
+                </div>
+            <% end %>
+          <% end %>
       </div>
-      <%= submit_tag "Rechercher", class: "btn btn-primary " %>
-    <% end %>
-     <div class="row" id="assos">
-      <% @assos.each do |asso| %>
-        <div class="card index">
-          <div class="card-body">
-            <h2><%= link_to asso.name.capitalize, asso_path(asso)  %></h2>
-            <p><%= asso.description.capitalize %></p>
-            <%= image_svg(asso) %>
-            <h5><%= asso.city %></h5>
+
+      <div class="map col-6">
+          <%# <h2> Les associations autour de moi </h2> %>
+          <div class="map_style" id="map"
+            style="width: 100%; height: 600px;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
-        </div>
-      <% end %>
+      </div>
     </div>
-    </div>
-  </div>
+ </div>
