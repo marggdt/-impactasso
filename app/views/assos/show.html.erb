@@ -1,24 +1,34 @@
-<div class="card">
-  <div class="card-body">
-    <h1><%= @asso.name.capitalize %></h1>
-        <p><%= link_to "⬅", assos_path %></p>
-      <p><%= @asso.description %></p>
-      <p><%= @asso.address %> , <%= @asso.zipcode%> - <%= @asso.city%></p>
+<div class="container">
 
-    <h4> Missions en ligne :</h4>
-    <ul>
-      <li>ici lister les missions scrappées - link to show de la mission</li>
-      <li>ici lister les missions scrappées - link to show de la mission</li>
-      <li>ici lister les missions scrappées - link to show de la mission</li>
-    <ul>
+
+
+  <div class="row justify-content-center">
+      <div class="card col-12 col-lg-6">
+          <h1><%= @asso.name.capitalize %></h1>
+            <p><%= @asso.description %></p>
+            <p><%= @asso.address %> , <%= @asso.zipcode%> - <%= @asso.city%></p>
+      </div>
   </div>
-</div>
-<div class="card">
- <div class="card-body">
-   <div id="map"
-    style="width: 100%; height: 600px;"
-    data-markers="<%= @marker.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+
+
+    <div class="row justify-content-center">
+      <div class="card col-12 col-lg-6">
+          <h4> Missions en ligne :</h4>
+          <ul>
+            <li>ici lister les missions scrappées - link to show de la mission</li>
+            <li>ici lister les missions scrappées - link to show de la mission</li>
+            <li>ici lister les missions scrappées - link to show de la mission</li>
+          <ul>
+      </div>
+  </div>
+
+  <div class="row justify-content-center">
+      <div class="card col-12 col-lg-6">
+          <div id="map"
+            style="width: 100%; height: 600px;"
+            data-markers="<%= @marker.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+     </div>
   </div>
 </div>
