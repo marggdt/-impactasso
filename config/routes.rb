@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :favorites, only: :index
   end
 
-  resources :missions, only: :show do
+  resources :missions, only: :index do
     resources :favorites, only: :create
   end
 
