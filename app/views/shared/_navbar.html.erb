@@ -9,14 +9,15 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
+         <div class="nav-link "> <%= link_to "Accueil", root_path%> </div>
+        </li>
+        <li class="nav-item active">
          <div class="nav-link "> <%= link_to "Trouver une mission", missions_path%> </div>
         </li>
          <li class="nav-item active">
          <div class="nav-link "> <%= link_to "Trouver une asso", assos_path%> </div>
         </li>
-         <li class="nav-item active">
-         <div class="nav-link "> <%= link_to "Accueil", root_path%> </div>
-        </li>
+
           <img class="avatar dropdown-toggle" id="navbarD ropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgoJPGc+CgkJPHBhdGggZD0iTTI1NiwwQzExNC44NDQsMCwwLDExNC44NDQsMCwyNTZzMTE0Ljg0NCwyNTYsMjU2LDI1NnMyNTYtMTE0Ljg0NCwyNTYtMjU2UzM5Ny4xNTYsMCwyNTYsMHogTTI1Niw3NC42NjcgICAgYzY3LjYzNSwwLDEyMi42NjcsNTUuMDMxLDEyMi42NjcsMTIyLjY2N1MzMjMuNjM1LDMyMCwyNTYsMzIwcy0xMjIuNjY3LTU1LjAzMS0xMjIuNjY3LTEyMi42NjdTMTg4LjM2NSw3NC42NjcsMjU2LDc0LjY2N3ogICAgIE0yNTYsNDY5LjMzM2MtNjkuNzA3LDAtMTMxLjUyLTMzLjc1NS0xNzAuNDczLTg1LjYxNWM0Mi42NzYtMjAuNTM0LDEwMy42MjEtNDIuMzg1LDE3MC40NzMtNDIuMzg1ICAgIGM2Ni44NTcsMCwxMjcuODA3LDIxLjg1NCwxNzAuNDc0LDQyLjM4M0MzODcuNTIxLDQzNS41NzcsMzI1LjcwOCw0NjkuMzMzLDI1Niw0NjkuMzMzeiIgZmlsbD0iI2ZmZmZmZiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPgoJPC9nPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjwvZz48L3N2Zz4="/>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a><%= link_to "Mon profil",  user_path(current_user), class:"dropdown-item"%>
