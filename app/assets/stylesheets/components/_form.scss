@@ -1,0 +1,28 @@
+
+.form-group  {
+  position: relative;
+  margin: 32px 0;
+}
+.form-group .form-control {
+  display: block;
+  width: 100%;
+  height: 36px;
+  border-width: 0 0 2px 0;
+  border-color: black;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+.form-group .btn {
+  display: inline-block;
+  background-color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 16px;
+  padding: 8px 16px;
+  margin-top: 15px;
+  border: none;
+  width:200px;
+  cursor: pointer;
+}

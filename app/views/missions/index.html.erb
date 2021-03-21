@@ -1,6 +1,18 @@
 <div class="container">
+          <h1>Rechercher une mission</h1>
 
-<h>Les missions en lignes </h>
+  <div class="form-group col-12">
+              <%= form_tag missions_path, method: :get do %>
+                  <%= text_field_tag :query,
+                    params[:query],
+                    class: "form-control",
+                    placeholder: "Que recherchez-vous? 🔎"
+                  %>
+                  <%= submit_tag "Rechercher", class: "btn btn-primary " %>
+              <% end %>
+                </div>
+
+
 
   <div class="cards col-12">
     <% @missions.each do |mission| %>
@@ -15,4 +27,15 @@
         </div>
       <% end %>
   </div>
+
+  <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Précédent</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Suivant</a></li>
+  </ul>
+</nav>
+
 </div>
