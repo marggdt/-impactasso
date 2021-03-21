@@ -1,14 +1,18 @@
 <div class="container">
-  <div class="form-group">
+
+          <h1>Rechercher une association</h1>
+
+  <div class="form-group col-12">
               <%= form_tag assos_path, method: :get do %>
                   <%= text_field_tag :query,
                     params[:query],
                     class: "form-control",
-                    placeholder: "Trouver une asso"
+                    placeholder: " Que recherchez-vous? 🔎"
                   %>
-                </div>
-              <%= submit_tag "Rechercher", class: "btn btn-primary " %>
+                  <%= submit_tag "Rechercher", class: "btn btn-primary " %>
               <% end %>
+                </div>
+
 
     <div class="main-container">
 
