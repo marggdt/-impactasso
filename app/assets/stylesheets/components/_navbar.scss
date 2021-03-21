@@ -17,6 +17,9 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+.navbar-lewagon .navbar-brand img :hover {
+  cursor: pointer;
+}
 
 .nav-link a {
   font-size: 14px;
@@ -27,4 +30,8 @@
 .avatar {
   width: 25px;
   margin: 5px;
+}
+
+li :hover {
+  font-weight: bold;
 }
