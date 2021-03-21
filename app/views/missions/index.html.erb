@@ -1,13 +1,18 @@
-<ul>
-  <% @missions.each do |mission| %>
+<div class="container">
 
-    <li><%= mission.asso.name.upcase %></li>
-    <li><%= mission.title %></li>
-    <li><%= mission.lieu %></li>
-    <li><%= mission.type_mission %></li>
-    <li><%= mission.date_mission %></li>
-    <li><%= mission.dispo %></li>
-    <li><%= mission.web_scraper_start_url %></li>
-  <% end %>
-</ul>
+<h>Les missions en lignes </h>
 
+  <div class="cards col-12">
+    <% @missions.each do |mission| %>
+        <div class="card mission_card">
+          <h1><%= mission.asso.name.capitalize %></h1>
+          <h2><%= mission.title%></h2>
+          <p><%= mission.type_mission.capitalize %></p>
+          <%#<%= mission.date_mission %>
+          <h4><%= mission.dispo %><h4>
+          <h5><%= mission.lieu %></h5>
+          <%# <%= mission.web_scraper_start_url %>
+        </div>
+      <% end %>
+  </div>
+</div>
