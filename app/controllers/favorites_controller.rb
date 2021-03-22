@@ -1,48 +1,16 @@
 class FavoritesController < ApplicationController
-  before_action :set_favorite, only: [:show, :edit, :update, :destroy]
-
-  def profile
-    @user = current_user
-    @favorite_missions = current_user.favorites
-    @missions = current_user.missions
-  end
-
-  def index
-    @favorite = Favorite.all
-  end
-
-  def new
-    @mission = mission.find(params[:mission_id])
-    @favorite = favorite.new
-  end
-
-  def create
-    @mission = Mission.new(params[:mission])
-    @mission.save
-
-    redirect_to root_path, notice: 'Votres mission a bien été mise en favoris'
-  end
-
-  def edit
-  end
-
-  def update
-    @favorite.update(favorite_params)
-    redirect_to mission_path(@favorite)
-  end
-
-  def destroy
-    @favorite.destroy
-    redirect_to favorites_path
-  end
-
-  private
-
-  def favorite_params
-    params.require(:favorite).permit(:user, :mission)
-  end
-
-  def set_favorite
-    @favorite = favorite.find(params[:id])
+  def toggle_favorite
+    @mission = Mission.find(params[:mission_id])
+    is_favori = Favorite.where(user: current_user, mission: @mission)&.first
+    if is_favori
+      is_favori.destroy
+    else
+      Favorite.create(mission: @mission, user: current_user)
+    end
+    if params[:from] == 'user_profile'
+      redirect_to user_path(current_user)
+    else
+      redirect_to missions_path(query: params[:query])
+    end
   end
 end

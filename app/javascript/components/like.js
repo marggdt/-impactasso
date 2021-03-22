@@ -1,0 +1,6 @@
+const like = () => {
+
+
+};
+
+export { like }
