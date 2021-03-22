@@ -16,14 +16,22 @@
       </div>
 
 
-      <div class="show-card col-12 col-lg-6">
-          <h1> Missions en ligne :</h1>
-          <ol>
-            <% @missions_around_me.each do |mission| %>
-              <li><%= link_to mission.title, asso_mission_path(mission) %></li>
-            <% end %>
-          </ol>
-      </div>
+<div class="show-card col-12 col-lg-6">
+    <h4> Missions en ligne :</h4>
+    <ul>
+      <%= @missions_around_me.each do |mission| %>
+        <li><%= link_to mission.title, asso_mission_path(mission) %></li>
+     <% end %>
+    </ul>
+  </div>
+</div>
 
-
+<div class="card">
+ <div class="card-body">
+   <div id="map"
+    style="width: 100%; height: 600px;"
+    data-markers="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>
