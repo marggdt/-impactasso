@@ -17,14 +17,18 @@
 
 
 <div class="show-card col-12 col-lg-6">
-    <h4> Missions en ligne :</h4>
-    <ul>
-      <%= @missions_around_me.each do |mission| %>
-        <li><%= link_to mission.title, asso_mission_path(mission) %></li>
-     <% end %>
-    </ul>
-  </div>
+          <h1> Missions en ligne :</h1>
+          <ol>
+          <% if @missions_around_me.to_a.empty? %>
+            <p>Désolée nous n'avons aucune mission disponible pour le moment :( </p>
+            <% elsif @missions_around_me.each do |mission| %>
+                <li><%= link_to mission.title, asso_mission_path(mission) %></li>
+            <% end %>
+          <% end %>
+          </ol>
+      </div>
 </div>
+
 
 <div class="card">
  <div class="card-body">
