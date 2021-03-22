@@ -1,18 +1,17 @@
 class MissionsController < ApplicationController
   def index
     @missions = Mission.all
-     def index
-      if params[:query].present?
-        sql_query = " \
-        missions.title @@ :query \
-        OR missions.lieu @@ :query \
-        OR missions.type_mission @@ :query \
-        OR missions.dispo @@ :query \
-        "
-        @missions = Mission.where(sql_query, query: "%#{params[:query]}%")
-      else
-        @missions = Mission.order("RANDOM()")
-      end
+    if params[:query].present?
+      sql_query = " \
+      missions.title @@ :query \
+      OR missions.lieu @@ :query \
+      OR missions.type_mission @@ :query \
+      OR missions.dispo @@ :query \
+      OR assos.name @@ :query \
+      "
+      @missions = Mission.joins(:asso).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @missions = Mission.order("RANDOM()")
     end
   end
 
