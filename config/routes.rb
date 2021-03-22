@@ -7,12 +7,14 @@ Rails.application.routes.draw do
     resources :missions, only: [:show, :new, :create, :delete, :index]
   end
 
-  resources :users do
-    resources :favorites, only: :index
-  end
+  resources :users
 
   resources :missions, only: :index do
-    resources :favorites, only: :create
+    resources :favorites, only: [] do
+      collection do
+        get :toggle_favorite
+      end
+    end
   end
 
   namespace :api, defaults: { format: :json } do

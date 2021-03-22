@@ -6,6 +6,15 @@ class AssosController < ApplicationController
     else
       @assos = Asso.limit(20).order("RANDOM()")
     end
+
+    @markers = @assos.map do |asso|
+      {
+        lat: asso.latitude,
+        lng: asso.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { asso: asso }),
+        image_url: helpers.asset_url('location.svg')
+      }
+    end
   end
 
   def show
