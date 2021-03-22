@@ -7,10 +7,10 @@
 
     <h4> Missions en ligne :</h4>
     <ul>
-      <li>ici lister les missions scrappées - link to show de la mission</li>
-      <li>ici lister les missions scrappées - link to show de la mission</li>
-      <li>ici lister les missions scrappées - link to show de la mission</li>
-    <ul>
+      <%= @missions_around_me.each do |mission| %>
+        <li><%= link_to mission.title, asso_mission_path(mission) %></li>
+     <% end %>
+    </ul>
   </div>
 </div>
 <div class="card">

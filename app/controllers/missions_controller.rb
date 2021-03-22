@@ -4,7 +4,7 @@ class MissionsController < ApplicationController
   end
 
   def show
-    @mission = Mission.find(params[:id])
+    @mission = Mission.find(params[:asso_id])
   end
 
   def new
