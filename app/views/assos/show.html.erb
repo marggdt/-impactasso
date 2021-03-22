@@ -4,7 +4,6 @@
 
       <div class="show-card col-12 col-lg-6">
           <h1><%= @asso.name.capitalize %></h1> <%= image_svg(@asso) %>
-          <h6>Catégorie : <%= @asso.category.capitalize%></h6>
             <p><%= @asso.description %></p>
             <h2><%= @asso.address.upcase %> , <%= @asso.zipcode%> - <%= @asso.city.upcase%></h2>
             <button> contacter </button>
