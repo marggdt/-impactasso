@@ -7,15 +7,20 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
 };
 
-const addMarkersToMap = (map, markers) => {
-  markers.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
-    new mapboxgl.Marker()
-    .setLngLat([marker.lng, marker.lat])
-    .setPopup(popup)
-    .addTo(map);
-  });
-};
+// const addMarkersToMap = (map, markers) => {
+//   const el = document.createElement('div');
+//   el.className = 'marker';
+//   el.style.backgroundImage = `url('${marker.image_url}')`;
+//   el.style.backgroundSize = 'contain'
+//   el.style.width = '25px'
+//   el.style.height = '25px'
+//   markers.forEach((marker) => {
+//     new mapboxgl.Marker()
+//     .setLngLat([marker.lng, marker.lat])
+//     .setPopup(popup)
+//     .addTo(map);
+//   });
+// };
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
@@ -26,17 +31,27 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/pdunleav/cjofefl7u3j3e2sp0ylex3cyb'
     });
+
     const markers = JSON.parse(mapElement.dataset.markers);
 
-    console.log(markers)
     markers.forEach((marker) => {
-      new mapboxgl.Marker()
+      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+      const el = document.createElement('div');
+      // el.className = 'marker';
+      el.style.backgroundImage = `url('${marker.image_url}')`;
+      el.style.backgroundSize = 'contain'
+      el.style.width = '25px'
+      el.style.height = '25px'
+
+      console.log(el)
+
+      new mapboxgl.Marker(el)
         .setLngLat([marker.lng, marker.lat])
         .addTo(map);
     });
 
     fitMapToMarkers(map, markers);
-    addMarkersToMap(map, markers);
+    // addMarkersToMap(map, markers);
   }
 
 };

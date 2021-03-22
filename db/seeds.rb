@@ -54,8 +54,6 @@ CSV.open(missing_assos_from_mission_csv, 'wb') do |csv|
 
 end
 
-exit
-
   puts assos.uniq.count
   # puts missions
   CATEGORIES = {
