@@ -1,41 +1,41 @@
 <div class="container">
-          <h1>Rechercher une mission</h1>
-
+  <h1>Rechercher une mission</h1>
   <div class="form-group col-12">
-              <%= form_tag missions_path, method: :get do %>
-                  <%= text_field_tag :query,
-                    params[:query],
-                    class: "form-control",
-                    placeholder: "Que recherchez-vous? 🔎"
-                  %>
-                  <%= submit_tag "Rechercher", class: "btn btn-primary " %>
-              <% end %>
-                </div>
-
-
-
-  <div class="cards col-12">
-    <% @missions.each do |mission| %>
-        <div class="card mission_card">
-          <h1><%= mission.asso.name.capitalize %></h1>
-          <h2><%= mission.title%></h2>
-          <p><%= mission.type_mission.capitalize %></p>
-          <%#<%= mission.date_mission %>
-          <h4><%= mission.dispo %><h4>
-          <h5><%= mission.lieu %></h5>
-          <%# <%= mission.web_scraper_start_url %>
-        </div>
+      <%= form_tag missions_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Que recherchez-vous? 🔎"
+          %>
+          <%= submit_tag "Rechercher", class: "btn btn-primary " %>
       <% end %>
   </div>
 
-  <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Précédent</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Suivant</a></li>
-  </ul>
-</nav>
+  <div class="cards col-12">
+    <% @missions.each do |mission| %>
+      <div class="card mission_card" id="mission-<%= mission.id %>">
+        <h1><%= mission.asso.name.capitalize %></h1>
+        <h2><%= mission.title%></h2>
+        <p><%= mission.type_mission.capitalize %></p>
+        <%#<%= mission.date_mission %>
+        <h4><%= mission.dispo %><h4>
+        <h5><%= mission.lieu %></h5>
+        <%# <%= mission.web_scraper_start_url %>
+        <% if user_signed_in? %>
+          <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'missions_index' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Précédent</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Suivant</a></li>
+    </ul>
+  </nav>
 </div>
+
