@@ -17,6 +17,7 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import { initMapbox } from '../plugins/init_mapbox';
+import { like } from '../components/like';
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -33,8 +34,7 @@ document.addEventListener('turbolinks:load', () => {
 
   // Call your functions here, e.g:
   // initSelect2();
-
-
+  like()
   initMapbox();
 //
 })
