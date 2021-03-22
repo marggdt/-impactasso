@@ -1,17 +1,20 @@
 <div class="container">
   <h1>Rechercher une mission</h1>
   <div class="form-group col-12">
-      <%= form_tag missions_path, method: :get do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Que recherchez-vous? 🔎"
-          %>
-          <%= submit_tag "Rechercher", class: "btn btn-primary " %>
-      <% end %>
-  </div>
 
-  <div class="cards col-12">
+              <%= form_tag missions_path, method: :get do %>
+                  <%= text_field_tag :query,
+                    params[:query],
+                    class: "form-control",
+                    placeholder: "Que recherchez-vous? 🔎"
+                  %>
+                  <%= submit_tag "Rechercher", class: "btn btn-primary " %>
+              <% end %>
+                </div>
+
+
+  <div class="cards col-12" >
+
     <% @missions.each do |mission| %>
       <div class="card mission_card" id="mission-<%= mission.id %>">
         <h1><%= mission.asso.name.capitalize %></h1>
