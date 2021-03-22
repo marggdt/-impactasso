@@ -1,6 +1,8 @@
-<h2><%= @mission.name %></h2>
-<p><%= @mission.description %></p>
-<p><%= @mission.tags %></p>
+<div>
+      <h2><%= @mission.title %></h2>
+      <li> <strong>Lieu :</strong> <%= @mission.lieu %></li>
+      <li> <strong>Disponibilitée demandée :</strong> <%= @mission.dispo %></li>
+      <li> <strong>Type de mission :</strong> <%= @mission.type_mission %></li>
+      <li> <strong>date de mission :</strong> <%= @mission.date_mission %></li>
 
-
-<%= link_to "add to favorites",  %>
+</div>
