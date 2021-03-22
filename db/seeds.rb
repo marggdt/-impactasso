@@ -17,32 +17,50 @@ file_missions_csv = File.join(__dir__, '../data/missions.csv')
 csv_options = { headers: true, col_sep: ',', liberal_parsing: true }
 assos = []
 
-CSV.foreach(file_missions_csv, csv_options) do |row|
-  # asso_name = row[5].gsub("Association :", "").strip
-  asso_name = row[5].delete_prefix('Association : ')
-  asso_name.squish!
-  asso_name = asso_name.split('-')[0...-1].join('-')
-  asso_name.squish!
-  assos << asso_name if asso_name.present?
-  found_asso = Asso.where("name ILIKE ?", "%#{asso_name}%")
-  found_asso = Asso.where("name ILIKE ?", "%#{asso_name}%")
-  web_scraper_start_url = row[1]
-  lieu = row[3].delete_prefix('Lieu : ')
-  type_mission = row[4].delete_prefix('Type : ')
-  date_mission = row[6].delete_prefix('Date : ')
-  dispo = row[7].delete_prefix('Disponibilité demandée : ')
-  title = row[2]
+missing_match = []
+missing_assos_from_mission_csv = File.join(__dir__, '../data/missing_assos_from_mission.csv')
 
-  if  !found_asso.empty? && asso_name.present?
-    m = Mission.create(asso_id: found_asso.first.id, web_scraper_start_url: web_scraper_start_url, lieu: lieu, type_mission: type_mission, date_mission: date_mission, dispo: dispo, title: title)
-    puts "Mission #{m.web_scraper_start_url}, asso: #{m.asso.name}"
+CSV.open(missing_assos_from_mission_csv, 'wb') do |csv|
+
+  CSV.foreach(file_missions_csv, csv_options) do |row|
+    debug = row["lieu"].include? 'LYON'
+    if debug
+      # ap "je debug"
+      # ap row
+    end
+    # asso_name = row[5].gsub("Association :", "").strip
+    asso_name = row[5].delete_prefix('Association : ')
+    asso_name.squish!
+    asso_name = asso_name.split('-')[0...-1].join('-')
+    asso_name.squish!
+    assos << asso_name if asso_name.present?
+    found_asso = Asso.where("name ILIKE ?", "%#{asso_name}%")
+    found_asso = Asso.where("name ILIKE ?", "%#{asso_name}%")
+    web_scraper_start_url = row[1]
+    lieu = row[3].delete_prefix('Lieu : ')
+    type_mission = row[4].delete_prefix('Type : ')
+    date_mission = row[6].delete_prefix('Date : ')
+    dispo = row[7].delete_prefix('Disponibilité demandée : ')
+    title = row[2]
+    if  !found_asso.empty? && asso_name.present?
+      m = Mission.create(asso_id: found_asso.first.id, web_scraper_start_url: web_scraper_start_url, lieu: lieu, type_mission: type_mission, date_mission: date_mission, dispo: dispo, title: title)
+      if debug
+        ap "je suis dans le if"
+      end
+      # puts "Mission #{m.web_scraper_start_url}, asso: #{m.asso.name}"
+    elsif debug
+      csv << row.to_h.values
+    end
+
   end
 
 end
 
-puts assos.uniq.count
-# puts missions
-CATEGORIES = {
+exit
+
+  puts assos.uniq.count
+  # puts missions
+  CATEGORIES = {
   foot: "sport",
   tennis: "sport",
   golf: "sport",

@@ -1,2 +1,4 @@
-<h2><%= mission.name %></h2>
-<p><%= mission.address %></p>
+<div class="infowindow">
+  <h2><%= link_to asso.name.capitalize, asso_path(asso)  %></h2>
+  <p><%= asso.description.capitalize.truncate(20) %></p>
+</div>

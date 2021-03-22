@@ -1,10 +1,22 @@
-<div class="card">
-  <div class="card-body">
-    <h1><%= @asso.name.capitalize %></h1>
-        <p><%= link_to "⬅", assos_path %></p>
-      <p><%= @asso.description %></p>
-      <p><%= @asso.address %> , <%= @asso.zipcode%> - <%= @asso.city%></p>
+<div class="container">
 
+    <div class="main-container">
+
+      <div class="show-card col-12 col-lg-6">
+          <h1><%= @asso.name.capitalize %></h1> <%= image_svg(@asso) %>
+            <p><%= @asso.description %></p>
+            <h2><%= @asso.address.upcase %> , <%= @asso.zipcode%> - <%= @asso.city.upcase%></h2>
+            <button> contacter </button>
+
+          <div id="map"
+            style="width: 100%; height: 200px;"
+            data-markers="<%= @marker.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+      </div>
+
+
+<div class="show-card col-12 col-lg-6">
     <h4> Missions en ligne :</h4>
     <ul>
       <%= @missions_around_me.each do |mission| %>
@@ -13,6 +25,7 @@
     </ul>
   </div>
 </div>
+
 <div class="card">
  <div class="card-body">
    <div id="map"
