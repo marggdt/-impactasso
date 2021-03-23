@@ -5,11 +5,11 @@ class AssosController < ApplicationController
       # sql_query = "name ILIKE :query OR description ILIKE :query"
       # @assos = Asso.where(sql_query, query: "%#{params[:query]}%")
       @assos = Asso.search_by_all(params[:query])
-      @markers = create_map_markers(@assos)
     else
-      @assos = Asso.limit(20)
-      @markers = create_map_markers(@assos)
+      @assos = Asso.limit(20).order("RANDOM()")
     end
+
+    @markers = create_map_markers(@assos)
   end
 
   def show
@@ -24,13 +24,14 @@ class AssosController < ApplicationController
   end
 
   private
+
   def create_map_markers(assos)
     assos.map do |asso|
       {
+        id: asso.id,
         lat: asso.latitude,
         lng: asso.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { asso: asso }),
-        image_url: helpers.asset_url('location.svg')
+        infoWindow: render_to_string(partial: "info_window", locals: { asso: asso })
       }
     end
   end

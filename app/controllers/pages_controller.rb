@@ -7,8 +7,7 @@ class PagesController < ApplicationController
       {
         lat: asso.latitude,
         lng: asso.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { asso: asso }),
-        image_url: helpers.asset_url('location.svg')
+        infoWindow: render_to_string(partial: "info_window", locals: { asso: asso })
       }
     end
   end

@@ -1,15 +1,18 @@
 
 <div class="main-container">
 
-  <div class=" col-6">
+  <div class="col-6">
       <div class="map_style map" id="map"
         style="width: 100%;"
         data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-image-selected="<%= image_url('pin_selected.svg') %>"
+        data-image-unselected="<%= image_url('pin_unselected.svg') %>"
+        >
       </div>
   </div>
 
-  <div class="col-6 ">
+  <div class="col-6">
     <div class="container">
       <div class="form-group col-12">
         <%= form_tag assos_path, method: :get, class:"d-flex justify-content-between align-items-end" do %>
@@ -24,16 +27,16 @@
     </div>
     <div class="cards side-container">
       <% @assos.each do |asso| %>
-        <%= link_to asso_path(asso)do %>
-            <div class="card">
-              <h1><%=asso.name.capitalize.truncate(50)%></h1>
-              <p><%= asso.description.capitalize.truncate(150) %></p>
-              <%= image_svg(asso) %>
-              <h2><%= asso.city %></h2>
-            </div>
-        <% end %>
+        <div class="card asso-card" data-asso-id="<%= asso.id %>">
+          <h1><%=link_to asso.name.capitalize.truncate(50), asso_path(asso) %></h1>
+          <p><%= asso.description.capitalize.truncate(150) %></p>
+          <%= image_svg(asso) %>
+          <h2><%= asso.city %></h2>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
-    <%= render 'shared/footer' %>
+
+<%= render 'shared/footer' %>
+

@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :assos, only: :index
-  resources :missions, only: :show
-
-  resources :assos do
+  resources :assos, only: :index do
     resources :missions, only: [:show, :new, :create, :delete, :index]
   end
 
   resources :users
 
-  resources :missions, only: :index do
+  resources :missions, only: [:index, :show] do
     resources :favorites, only: [] do
       collection do
         get :toggle_favorite
