@@ -25,7 +25,7 @@ const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
   if (mapElement) {
-    console.log("in mapox")
+    console.log("in mapbox")
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
@@ -37,16 +37,15 @@ const initMapbox = () => {
     markers.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
       const el = document.createElement('div');
-      // el.className = 'marker';
+      el.className = 'marker';
       el.style.backgroundImage = `url('${marker.image_url}')`;
       el.style.backgroundSize = 'contain'
       el.style.width = '25px'
       el.style.height = '25px'
 
-      console.log(el)
-
       new mapboxgl.Marker(el)
         .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup)
         .addTo(map);
     });
 
