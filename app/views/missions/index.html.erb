@@ -23,6 +23,7 @@
         <%#<%= mission.date_mission %>
         <h4><%= mission.dispo %><h4>
         <h5><%= mission.lieu %></h5>
+
         <%# <%= mission.web_scraper_start_url %>
         <% if user_signed_in? %>
           <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'missions_index' %>

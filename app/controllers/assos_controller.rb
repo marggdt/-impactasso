@@ -7,7 +7,7 @@ class AssosController < ApplicationController
       @assos = Asso.search_by_all(params[:query])
       @markers = create_map_markers(@assos)
     else
-      @assos = Asso.limit(20).order("RANDOM()")
+      @assos = Asso.limit(20)
       @markers = create_map_markers(@assos)
     end
   end
