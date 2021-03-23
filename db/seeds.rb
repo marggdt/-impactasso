@@ -1,5 +1,15 @@
 require 'csv'
+PgSearch::Document.delete_all
+Favorite.delete_all
 Mission.delete_all
+Asso.delete_all
+User.delete_all
+
+
+
+puts "#{PgSearch::Document.count}-#{Favorite.count}-#{Mission.count}-#{Asso.count}-#{User.count}"
+puts 'DB clean'
+puts '==================='
 # Asso.delete_all
 # file_assos_csv = File.join(__dir__, '../data/assos.csv')
 # sql = <<-SQL
@@ -10,9 +20,8 @@ Mission.delete_all
 # SQL
 # ActiveRecord::Base.connection.execute(sql)
 
+puts "Begin fill database"
 
-
-puts "Asso created"
 file_missions_csv = File.join(__dir__, '../data/missions.csv')
 csv_options = { headers: true, col_sep: ',', liberal_parsing: true }
 assos = []
@@ -22,9 +31,7 @@ missing_assos_from_mission_csv = File.join(__dir__, '../data/missing_assos_from_
 
 CSV.open(missing_assos_from_mission_csv, 'wb') do |csv|
   CSV.foreach(file_missions_csv, csv_options) do |row|
-    debug = row[5] == "Association : Crias"
-    if debug
-    end
+
     # exit if i == 30
     # asso_name = row[5].gsub("Association :", "").strip
     asso_name = row[5].delete_prefix('Association : ')
@@ -163,7 +170,6 @@ exit
   course: "sport",
   hockey: "sport",
   roller: "sport",
-  hockey: "sport",
   longboard: "sport",
   skate: "sport",
 }

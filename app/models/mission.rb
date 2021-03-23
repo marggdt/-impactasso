@@ -1,5 +1,5 @@
 class Mission < ApplicationRecord
-  belongs_to :asso, dependent: :destroy
+  belongs_to :asso
   has_many :favorites
 
 
