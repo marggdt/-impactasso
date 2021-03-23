@@ -12,23 +12,21 @@
               <% end %>
                 </div>
 
-
   <div class="cards col-12" >
-
     <% @missions.each do |mission| %>
-      <div class="card mission_card" id="mission-<%= mission.id %>">
-        <h1><%= link_to mission.asso.name.capitalize, mission_path(mission) %></h1>
-        <h2><%= mission.title%></h2>
-        <p><%= mission.type_mission.capitalize %></p>
-        <%#<%= mission.date_mission %>
-        <h4><%= mission.dispo %><h4>
-        <h5><%= mission.lieu %></h5>
-        <%# <%= mission.web_scraper_start_url %>
-        <% if user_signed_in? %>
-          <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'missions_index' %>
-        <% end %>
+      <div class="card mission_card" id="mission">
+          <%= link_to mission_path(mission)do%>
+              <h1><%= mission.asso.name.capitalize%></h1>
+              <h2><%= mission.title%></h2>
+              <p><%= mission.type_mission.capitalize %></p>
+              <h4><%= mission.dispo %><h4>
+              <h5><%= mission.lieu %></h5>
+          <% if user_signed_in? %>
+        <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'missions_index' %>
       </div>
-    <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
   </div>
 
   <nav aria-label="Page navigation example">
