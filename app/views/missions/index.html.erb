@@ -1,6 +1,7 @@
 <div class="container">
+ <div class="form-group col-12">
   <h1>Rechercher une mission</h1>
-  <div class="form-group col-12">
+
 
               <%= form_tag missions_path, method: :get do %>
                   <%= text_field_tag :query,
@@ -23,7 +24,6 @@
               <h5><%= mission.lieu %></h5>
           <% if user_signed_in? %>
         <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'missions_index' %>
-
       </div>
           <% end %>
         <% end %>
