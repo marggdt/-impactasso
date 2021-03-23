@@ -23,6 +23,7 @@
           <% if user_signed_in? %>
             <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'user_profile' %>
           <% end %>
+         <a href="mailto:pierre.thomas9@orange.fr?subject = Feedback&amp;body = Message" target="_blank" class="btn-blue">Contact me</a>
         </div>
       <% end %>
     </div>
