@@ -1,6 +1,4 @@
 .cards {
-  // margin:10px ;
-  // padding: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
@@ -40,9 +38,9 @@
   font-size: 16px;
 }
 
-a:link
-{
+a:link {
  text-decoration:none;
+
 }
 
 .svg_img {
@@ -50,4 +48,13 @@ a:link
   height: 35px;
   width: 35px;
   color: #2AC489;
+}
+
+.mission_card {
+  padding: 20px;
+
+}
+
+.show_card link {
+  font-size: 30px;
 }
