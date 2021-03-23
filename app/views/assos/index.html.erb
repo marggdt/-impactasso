@@ -19,7 +19,7 @@
       <div class="cards col-6">
             <% @assos.each do |asso| %>
                 <div class="card asso-card" data-asso-id="<%= asso.id %>">
-                  <h1><%=link_to asso.name.capitalize.truncate(50), asso_path(asso) %> <%= asso.id %></h1>
+                  <h1><%=link_to asso.name.capitalize.truncate(50), asso_path(asso) %></h1>
                   <p><%= asso.description.capitalize.truncate(150) %></p>
                   <%= image_svg(asso) %>
                   <h2><%= asso.city %></h2>
