@@ -5,7 +5,6 @@ class AssosController < ApplicationController
       # sql_query = "name ILIKE :query OR description ILIKE :query"
       # @assos = Asso.where(sql_query, query: "%#{params[:query]}%")
       @assos = Asso.search_by_all(params[:query])
-      @markers = create_map_markers(@assos)
     else
       @assos = Asso.limit(20).order("RANDOM()")
     end
