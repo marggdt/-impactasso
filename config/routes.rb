@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :assos, only: :index do
+  resources :assos, only: [:index, :show] do
     resources :missions, only: [:show, :new, :create, :delete, :index]
   end
 

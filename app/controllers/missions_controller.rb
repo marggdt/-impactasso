@@ -11,9 +11,9 @@ class MissionsController < ApplicationController
       # OR assos.name @@ :query \
       # "
       # @missions = Mission.joins(:asso).where(sql_query, query: "%#{params[:query]}%")
-      @missions = Mission.global_search(params[:query])
+      @missions = Mission.global_search(params[:query]).limit(100)
     else
-      @missions = Mission.all
+      @missions = Mission.all.limit(100)
     end
   end
 
