@@ -21,13 +21,12 @@
               <p><%= mission.type_mission.capitalize %></p>
               <h4><%= mission.dispo %><h4>
               <h5><%= mission.lieu %></h5>
-          <% if user_signed_in? %>
-        <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'missions_index' %>
-
-      </div>
-          <% end %>
+            <% if user_signed_in? %>
+              <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'missions_index' %>
+            <% end %>
         <% end %>
-      <% end %>
+      </div>
+    <% end %>
   </div>
 
   <nav aria-label="Page navigation example">
