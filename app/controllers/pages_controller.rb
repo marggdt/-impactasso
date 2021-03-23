@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home, :search]
 
   def home
     # render layout: 'special'
@@ -10,5 +10,9 @@ class PagesController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { asso: asso })
       }
     end
+  end
+
+  def search
+    redirect_to send(params[:kind] + '_path', query: params[:query])
   end
 end

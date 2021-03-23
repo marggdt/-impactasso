@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get 'search', to: 'pages#search'
   resources :assos, only: [:index, :show] do
     resources :missions, only: [:show, :new, :create, :delete, :index]
   end
