@@ -10,6 +10,13 @@ User.delete_all
 puts "#{PgSearch::Document.count}-#{Favorite.count}-#{Mission.count}-#{Asso.count}-#{User.count}"
 puts 'DB clean'
 puts '==================='
+
+puts 'Created user'
+u = User.create(email: 'nona@test.fr', password: 'azerty')
+puts "Users: #{User.count}"
+
+
+
 csv_options = { headers: true, col_sep: ',', liberal_parsing: true }
 
 puts "Create assos"
