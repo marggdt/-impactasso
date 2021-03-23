@@ -1,38 +1,39 @@
-<div class="container">
 
-          <h1>Rechercher une association</h1>
+<div class="main-container">
 
-  <div class="form-group col-12">
-              <%= form_tag assos_path, method: :get do %>
-                  <%= text_field_tag :query,
-                    params[:query],
-                    class: "form-control",
-                    placeholder: " Que recherchez-vous? 🔎"
-                  %>
-                  <%= submit_tag "Rechercher", class: "btn btn-primary " %>
-              <% end %>
-                </div>
-
-
-    <div class="main-container">
-
-      <div class="cards col-6">
-            <% @assos.each do |asso| %>
-                <div class="card asso-card" data-asso-id="<%= asso.id %>">
-                  <h1><%=link_to asso.name.capitalize.truncate(50), asso_path(asso) %></h1>
-                  <p><%= asso.description.capitalize.truncate(150) %></p>
-                  <%= image_svg(asso) %>
-                  <h2><%= asso.city %></h2>
-                </div>
-            <% end %>
+  <div class="col-6">
+      <div class="map_style map" id="map"
+        style="width: 100%;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
+  </div>
 
-      <div class="map col-6">
-          <div class="map_style" id="map"
-            style="width: 100%; height: 600px;"
-            data-markers="<%= @markers.to_json %>"
-            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
+  <div class="col-6">
+    <div class="container">
+      <div class="form-group col-12">
+        <%= form_tag assos_path, method: :get, class:"d-flex justify-content-between align-items-end" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: " Que recherchez-vous? 🔎"
+            %>
+            <%= submit_tag "Rechercher", class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
- </div>
+    <div class="cards side-container">
+      <% @assos.each do |asso| %>
+        <div class="card asso-card" data-asso-id="<%= asso.id %>">
+          <h1><%=link_to asso.name.capitalize.truncate(50), asso_path(asso) %></h1>
+          <p><%= asso.description.capitalize.truncate(150) %></p>
+          <%= image_svg(asso) %>
+          <h2><%= asso.city %></h2>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'shared/footer' %>
+

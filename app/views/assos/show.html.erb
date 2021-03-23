@@ -6,13 +6,14 @@
           <h1><%= @asso.name.capitalize %></h1> <%= image_svg(@asso) %>
             <p><%= @asso.description %></p>
             <h2><%= @asso.address.upcase %> , <%= @asso.zipcode%> - <%= @asso.city.upcase%></h2>
-            <button> contacter </button>
 
           <div id="map"
             style="width: 100%; height: 200px;"
             data-markers="<%= @marker.to_json %>"
             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
+          <button class="btn btn-success"> contacter </button>
+
       </div>
 
 <div class="show-card col-12 col-lg-6">
@@ -27,22 +28,3 @@
           </ol>
       </div>
 </div>
-
-
-<div class="card">
- <div class="card-body">
-   <div id="map"
-    style="width: 100%; height: 600px;"
-    data-markers="<%= @marker.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
-
-      <div class="card">
-      <div class="card-body">
-        <div id="map"
-          style="width: 100%; height: 600px;"
-          data-markers="<%= @marker.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
-        </div>
-      </div>

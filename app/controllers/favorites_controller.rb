@@ -9,6 +9,8 @@ class FavoritesController < ApplicationController
     end
     if params[:from] == 'user_profile'
       redirect_to user_path(current_user)
+    elsif params[:from] == 'mission_show'
+      redirect_to asso_mission_path(@mission, @mission.asso)
     else
       redirect_to missions_path(query: params[:query])
     end
