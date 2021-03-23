@@ -2,7 +2,8 @@ class Asso < ApplicationRecord
   has_many :missions, dependent: :destroy
 
   include PgSearch::Model
-  pg_search_scope :search_by_name_and_description, against: [ :name, :description ],
+  pg_search_scope :search_by_all,
+    against: [ :name, :description, :category, :city, :zipcode ],
     using: {
       tsearch: { prefix: true }
     }

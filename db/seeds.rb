@@ -70,7 +70,6 @@ end
 
 puts "Missions: #{Mission.count}"
 
-
 puts "Add categories to assos"
 
 CATEGORIES = {

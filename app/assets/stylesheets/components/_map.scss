@@ -1,7 +1,13 @@
 .map {
   border:none;
   text-decoration: none;
+  padding:0;
+  margin-left:0;
+  height: 100vh;
+  top: 0;
+  position:sticky;
 }
+
 
 .infowindow {
   background-color: white;
@@ -11,4 +17,8 @@
 .infowindow a {
   border:none;
 
+}
+
+.marker {
+  // background-image: asset-url('location.svg');
 }
