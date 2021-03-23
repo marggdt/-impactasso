@@ -13,7 +13,7 @@ class MissionsController < ApplicationController
       # @missions = Mission.joins(:asso).where(sql_query, query: "%#{params[:query]}%")
       @missions = Mission.global_search(params[:query])
     else
-      @missions = Mission.order("RANDOM()")
+      @missions = Mission.all
     end
   end
 
