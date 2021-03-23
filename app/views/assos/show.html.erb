@@ -21,7 +21,7 @@
           <% if @missions_around_me.to_a.empty? %>
             <p>Désolée nous n'avons aucune mission disponible pour le moment :( </p>
             <% elsif @missions_around_me.each do |mission| %>
-                <li><%= link_to mission.title, asso_mission_path(mission) %></li>
+                <li><%= link_to mission.title, asso_mission_path(@asso, mission) %></li>
             <% end %>
           <% end %>
           </ol>

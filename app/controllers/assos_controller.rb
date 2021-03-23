@@ -9,6 +9,7 @@ class AssosController < ApplicationController
 
     @markers = @assos.map do |asso|
       {
+        id: asso.id,
         lat: asso.latitude,
         lng: asso.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { asso: asso }),

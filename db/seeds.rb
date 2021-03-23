@@ -163,7 +163,6 @@ exit
   course: "sport",
   hockey: "sport",
   roller: "sport",
-  hockey: "sport",
   longboard: "sport",
   skate: "sport",
 }

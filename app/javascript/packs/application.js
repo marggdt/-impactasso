@@ -18,6 +18,8 @@ require("channels")
 
 import { initMapbox } from '../plugins/init_mapbox';
 import { like } from '../components/like';
+import { initCards } from '../plugins/init_cards';
+
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -34,7 +36,8 @@ document.addEventListener('turbolinks:load', () => {
 
   // Call your functions here, e.g:
   // initSelect2();
-  like()
+  like();
   initMapbox();
+  initCards();
 //
 })
