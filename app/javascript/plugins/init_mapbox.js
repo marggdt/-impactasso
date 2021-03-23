@@ -2,13 +2,16 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 let markersObject;
+let imageSelected;
+let imageUnselected;
+
 
 const unselectedMarker = (markerObject) => {
-  markerObject.getElement().querySelectorAll('svg g')[2].setAttribute("fill", "#3FB1CE") // bleu
+  markerObject.getElement().style.backgroundImage = `url(${imageUnselected})`;
 }
 
 const selectedMarker = (markerObject) => {
-  markerObject.getElement().querySelectorAll('svg g')[2].setAttribute("fill", "#2AC489") // vert
+  markerObject.getElement().style.backgroundImage = `url(${imageSelected})`;
 }
 
 const updateMarkerSelected = (assoId) => {
@@ -29,7 +32,7 @@ const addMarkersToMap = (map, markers) => {
 
     const el = document.createElement('div');
     el.className = 'marker';
-    el.style.backgroundImage = `url('${marker.image_url}')`;
+    el.style.backgroundImage = `url(${imageUnselected})`;
     el.style.backgroundSize = 'contain'
     el.style.width = '25px'
     el.style.height = '25px'
@@ -49,6 +52,8 @@ const initMapbox = () => {
   if (mapElement) {
     console.log("in mapbox")
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+    imageSelected = mapElement.dataset.imageSelected;
+    imageUnselected = mapElement.dataset.imageUnselected;
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/pdunleav/cjofefl7u3j3e2sp0ylex3cyb'
@@ -58,7 +63,6 @@ const initMapbox = () => {
 
     fitMapToMarkers(map, markers);
     addMarkersToMap(map, markers);
-    console.log(markersObject);
     window.updateMarkerSelected = updateMarkerSelected
   }
 
