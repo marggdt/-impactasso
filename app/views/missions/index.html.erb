@@ -16,7 +16,7 @@
   <div class="cards col-12" >
     <% @missions.each do |mission| %>
       <div class="card mission_card" id="mission">
-          <%= link_to mission_path(mission)do%>
+          <%= link_to mission_path(mission) do%>
               <h1><%= mission.asso.name.capitalize%></h1>
               <h2><%= mission.title%></h2>
               <p><%= mission.type_mission.capitalize %></p>
