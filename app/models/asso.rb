@@ -1,5 +1,5 @@
 class Asso < ApplicationRecord
-  has_many :missions
+  has_many :missions, dependent: :destroy
 
   include PgSearch::Model
   pg_search_scope :search_by_all,

@@ -1,4 +1,5 @@
 class AssosController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     if params[:query].present?
       # sql_query = "name ILIKE :query OR description ILIKE :query"
