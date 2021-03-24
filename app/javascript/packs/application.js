@@ -34,6 +34,6 @@ import "bootstrap";
 
 document.addEventListener('turbolinks:load', () => {
   like();
-  initMapbox();
   initCards();
+  setTimeout(initMapbox, 200)
 })
