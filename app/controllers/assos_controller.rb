@@ -4,9 +4,18 @@ class AssosController < ApplicationController
     if params[:query].present?
       # sql_query = "name ILIKE :query OR description ILIKE :query"
       # @assos = Asso.where(sql_query, query: "%#{params[:query]}%")
-      @assos = Asso.search_by_all(params[:query])
+      @assos = Asso.left_joins(:missions)
+      .select('assos.*, COUNT(missions.id) as total_mission')
+      .group('assos.id')
+      .search_by_all(params[:query])
+      .reorder('total_mission DESC')
+      .limit(100)
     else
-      @assos = Asso.limit(20).order("RANDOM()")
+      @assos = Asso.left_joins(:missions)
+      .select('assos.*, COUNT(missions.id) as total_mission')
+      .group('assos.id')
+      .order('total_mission DESC')
+      .limit(100)
     end
 
     @markers = create_map_markers(@assos)

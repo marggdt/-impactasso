@@ -25,10 +25,10 @@
       <% @assos.each do |asso| %>
         <div class="card asso-card" data-asso-id="<%= asso.id %>">
           <%= link_to asso_path(asso) do%>
-          <h1><%=asso.name.capitalize.truncate(50) %></h1>
-          <p><%= asso.description.capitalize.truncate(150) %></p>
-          <%= image_svg(asso) %>
-          <h2><%= asso.city %></h2>
+            <h1><%=asso.name.capitalize.truncate(50) %></h1>
+            <p><%= asso.description.capitalize.truncate(150) %></p>
+            <%= image_svg(asso) %>
+            <h2><%= asso.city %> (debub nombre de mission: <%= asso.total_mission %>)</h2>
           <% end %>
         </div>
       <% end %>
