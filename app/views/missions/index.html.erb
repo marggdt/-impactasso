@@ -17,7 +17,7 @@
        <%= content_tag "div style=display:none; id=mission#{mission.id}-data", mission.asso.to_json%>
           <%= link_to mission_path(mission) do%>
               <h1><%= mission.title%></h1>
-              <h2><%= mission.asso.name.capitalize%></h2>
+            <%# <h2><%= mission.asso.name.capitalize%</h2> %>
               <p><%= mission.type_mission %></p>
               <h4><%= mission.dispo %><h4>
               <h5><%= mission.lieu %></h5>
