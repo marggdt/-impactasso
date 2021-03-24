@@ -1,33 +1,37 @@
-<div class="container">
+<div class="main-container">
 
-    <div class="main-container">
+      <div class="show-card col-6">
+          <h1><%= @asso.name.capitalize %></h1> <%= image_svg(@asso) %>             <button class="btn btn-success"> contacter </button>
 
-      <div class="show-card col-12 col-lg-6">
-          <h1><%= @asso.name.capitalize %></h1> <%= image_svg(@asso) %>
             <p><%= @asso.description %></p>
             <h2><%= @asso.address.upcase %> , <%= @asso.zipcode%> - <%= @asso.city.upcase%></h2>
+            <div id="map"
+              style="width: 100%; height: 200px;"
+              data-markers="<%= @marker.to_json %>"
+              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+              data-image-selected="<%= image_url('pin_selected.svg') %>"
+              data-image-unselected="<%= image_url('pin_unselected.svg') %>">
+            </div>
+        </div>
 
-          <div id="map"
-            style="width: 100%; height: 200px;"
-            data-markers="<%= @marker.to_json %>"
-            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-            data-image-selected="<%= image_url('pin_selected.svg') %>"
-            data-image-unselected="<%= image_url('pin_unselected.svg') %>"
-           >
-          </div>
-          <button class="btn btn-success"> contacter </button>
-
-      </div>
-
-<div class="show-card col-12 col-lg-6">
-          <h1> Missions en ligne :</h1>
-          <ol>
+      <div class="col-6">
+          <div class="side-container">
+          <h6>Missions mises en ligne par <%= @asso.name.capitalize %></h6>
           <% if @missions_around_me.to_a.empty? %>
-            <p>Désolée nous n'avons aucune mission disponible pour le moment :( </p>
+            <p> Il semblerait que cette association n'ai pas publié de mission pour le moment ! 🕵️</p>
             <% elsif @missions_around_me.each do |mission| %>
-                <li><%= link_to mission.title, mission_path(mission) %></li>
+
+            <div class="show-card">
+              <%= link_to mission_path(mission) do%>
+                  <h3><%= mission.title%></h3>
+                  <h2><%= mission.type_mission %></h2>
+                  <p><%= mission.dispo %><p>
+                  <h5><%= mission.lieu %></h5>
+              </div>
+              <% end %>
             <% end %>
           <% end %>
-          </ol>
       </div>
-</div>
+
+    </div>
+ </div>
