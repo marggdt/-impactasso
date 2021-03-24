@@ -7,7 +7,9 @@
       <li> <strong>Disponibilitée demandée :</strong> <%= @mission.dispo %></li>
       <li> <strong>Type de mission :</strong> <%= @mission.type_mission %></li>
       <li> <strong>date de mission :</strong> <%= @mission.date_mission %></li>
-      <%= render "missions/toggle_favorite", mission: @mission, user: current_user, from: 'mission_show' %>
+      <% if current_user %>
+	      <%= render "missions/toggle_favorite", mission: @mission, user: current_user, from: 'mission_show' %>
+	  <% end %>
 </div>
 </div>
 </div>
