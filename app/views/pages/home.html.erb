@@ -12,6 +12,18 @@
             <input type="radio" name="kind" value="assos" id="asso" checked="">
             <label for="mission">mission</label>
             <input type="radio" name="kind" value="missions" id="mission">
+              <select name="category" id="category-select">
+                  <option value="">Rechercher une catégory</option>
+                  <option value="Sport">Sport</option>
+                  <option value="Culture">Culture</option>
+                  <option value="Santé">Santé</option>
+                  <option value="Animaux">Animaux</option>
+                  <option value="Art">Art</option>
+                  <option value="Environement">Environement</option>
+                  <option value="Politique">Politique</option>
+                  <option value="Education">Education</option>
+                  <option value="Alimentaire">Alimentaire</option>
+              </select>
             <div class="form-group input-text">
               <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Trouver une asso" %>
               <%= submit_tag "Rechercher", class: "btn btn-primary " %>
@@ -36,4 +48,5 @@
     </div>
   </div>
 </div>
+
 
