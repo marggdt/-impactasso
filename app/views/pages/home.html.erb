@@ -1,53 +1,48 @@
 <div class="home_banner">
    <div class="row">
       <div class="col-lg-6">
-        <div class="text">
-          <h1>Impact'Asso </h1>
-          <h2>Agis facilement pour des causes qui te tiennent à coeur</h2>
-          <span>La solution pour trouver facilement des associations et des missions de bénévolat qui te ressemblent, autour de chez toi!</span>
-        </div>
-        <div class="form-group ">
-        <h4>Je recherche :</h4>
-          <%= form_tag search_path, method: :get do %>
-            <label for="asso">Associations</label>
-            <input type="radio" name="kind" value="assos" id="defaultCheck1" checked="">
-            <label for="mission">Missions</label>
-            <input type="radio" name="kind" value="missions" id="mission">
-              <select name="category" id="category-select">
-                  <option value="">Rechercher une catégorie</option>
-                  <option value="Sport">Sport</option>
-                  <option value="Culture">Culture</option>
-                  <option value="Santé">Santé</option>
-                  <option value="Animaux">Animaux</option>
-                  <option value="Art">Art</option>
-                  <option value="Environement">Environement</option>
-                  <option value="Politique">Politique</option>
-                  <option value="Education">Education</option>
-                  <option value="Alimentaire">Alimentaire</option>
-              </select>
-            <div class="form-group input-text">
-              <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "🔎" %>
-              <%= submit_tag "Rechercher", class: "btn btn-primary " %>
+        <h1>Impact'Asso</h1>
+        <h4>Agis facilement pour des causes qui te tiennent à coeur</h4>
+        <div class="form-group">
+            <div class="group">
+              <h5>Je recherche :</h5>
+                <%= form_tag search_path, method: :get do %>
+                  <label for="asso">Associations</label>
+                  <input type="radio" name="kind" value="assos" id="defaultCheck1" checked="">
+                  <label for="mission">Missions</label>
+                  <input type="radio" name="kind" value="missions" id="mission">
             </div>
-          <% end %>
-        </div>
+            <div class="group">
+              <div class="form-group input-text d-flex">
+                <h5>Dans le domaine de:</h5>
+                  <select class="form-control" name="category" id="category-select">
+                      <option value="">Catégorie</option>
+                      <option value="Sport">Sport</option>
+                      <option value="Culture">Culture</option>
+                      <option value="Santé">Santé</option>
+                      <option value="Animaux">Animaux</option>
+                      <option value="Art">Art</option>
+                      <option value="Environement">Environement</option>
+                      <option value="Politique">Politique</option>
+                      <option value="Education">Education</option>
+                      <option value="Alimentaire">Alimentaire</option>
+                  </select>
+                </div>
+            </div>
+            <div class="group">
+              <div class="form-group input-text d-flex">
+                <h5>À :</h5>
+                <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Ville" %>
+              </div>
+              <%= submit_tag "Rechercher", class: "btn btn-primary " %>
+              <% end %>
+            </div>
       </div>
+    </div>
       <div class="col-lg-6">
-        <%= image_tag "9814.jpg", class: "img_preview" %>
+          <%= image_tag "5278.jpg", class: "img_index" %>
+      <h3>La solution pour trouver facilement des Associations et des missions de bénévolat autour de chez toi! </h3>
+
       </div>
    </div>
 </div>
-
-<div class="container">
-  <div class="mapbox">
-    <h3> Autour de moi </h3>
-    <div class="map_style" id="map"
-      style="width: 100%; height: 600px;"
-      data-markers="<%= @markers.to_json %>"
-      data-image-selected="<%= image_url('pin_selected.svg') %>"
-      data-image-unselected="<%= image_url('pin_unselected.svg') %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
-  </div>
-</div>
-

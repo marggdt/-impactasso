@@ -1,25 +1,14 @@
 .home_banner {
-  padding: 5rem;
+  padding: 3rem;
   background-color: white;
-  width: 100%;
-}
-
-.home_banner h1 {
-  font-family: 'Baloo Chettan 2', cursive;
-  font-size: 40px;
-  color: black;
 }
 
 .home_banner h2 {
   font-family: 'Baloo Chettan 2', cursive;
-  color: black;
-  font-size: 1.5rem;
-
 }
 
 .home_banner span {
   font-family: 'Montserrat';
-  font-size: 1.125rem;
   color:gray;
 }
 
@@ -40,28 +29,16 @@
   border: none;
 }
 
-.home_banner h1 {
-  font-size: 55px;
-  margin-bottom: 25px;
-}
-
-.home_banner h2 {
-  margin-bottom: 25px;
-}
-
-.home_banner {
-   margin-bottom: 20px;
-}
-
-.row {
-  // position: relative ;
+.img_index {
+  width: 95%;
+  margin-left: 25px;
+  margin-left: 25px;
 }
 
 .img_preview {
   width: 95%;
   margin-left: 25px;
   margin-left: 25px;
-  // position: absolute;
 }
 .hidden {
   display: none;
@@ -69,4 +46,8 @@
 
 .block {
   display: block;
+}
+
+.text h2 {
+  font-size: 40px;
 }

@@ -16,7 +16,7 @@
         <%= form_tag assos_path, method: :get, class:"d-flex justify-content-between align-items-end" do %>
             <%= text_field_tag :query,
               params[:query],
-              class: "form-control",
+              class: "form-control asso",
               placeholder: " Trouver une asso 🔎"
             %>
             <%= submit_tag "Rechercher", class: "btn btn-primary" %>
