@@ -16,29 +16,4 @@
       </p>
     </div>
   </div>
-
-
-
-
-
-  <div class="card-favortie-missions">
-    <h1> Mes favoris ⭐️ </h1>
-    <div class="cards col-12">
-      <% current_user.favorites_missions.each do |mission| %>
-        <div class="card mission_card" id="mission-<%= mission.id %>">
-          <h1><%= mission.asso.name.capitalize %></h1>
-          <h2><%= mission.title%></h2>
-          <p><%= mission.type_mission.capitalize %></p>
-          <%#<%= mission.date_mission %>
-          <h4><%= mission.dispo %><h4>
-          <h5><%= mission.lieu %></h5>
-          <%# <%= mission.web_scraper_start_url %>
-          <% if user_signed_in? %>
-            <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'user_profile' %>
-          <% end %>
-        <a href="mailto:pierre.thomas9@orange.fr?subject=%20Participation%20à%20une%20mission%20associative&body=Monsieur,%0D%0A%0D%0AJ'ai%20la%20volonté%20d'aller%20à%20la%20reoncontre%20de%20nouvelles%20personnes%20et%20de%20m'engager%20dans%20le%20but%20d'aider%20les%20gens.%0D%0A%0D%0ACordialement" target="_blank" class="btn-blue">Contact me</a>
-        </div>
-      <% end %>
-    </div>
-  </div>
 </div>
