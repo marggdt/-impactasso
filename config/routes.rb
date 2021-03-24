@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :missions, only: [:show, :new, :create, :delete, :index]
   end
 
+
   resources :users
 
   resources :missions, only: [:index, :show] do
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
       resources :assos, only: [ :index ]
     end
   end
+
+  resources :favorites
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

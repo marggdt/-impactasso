@@ -13,6 +13,6 @@ class PagesController < ApplicationController
   end
 
   def search
-    redirect_to send(params[:kind] + '_path', query: params[:query])
+    redirect_to send(params[:kind] + '_path', query: params[:query] + " " + params[:category])
   end
 end
