@@ -4,12 +4,21 @@ class AssosController < ApplicationController
     if params[:query].present?
       # sql_query = "name ILIKE :query OR description ILIKE :query"
       # @assos = Asso.where(sql_query, query: "%#{params[:query]}%")
-      @assos = Asso.search_by_all(params[:query])
-      @markers = create_map_markers(@assos)
+      @assos = Asso.left_joins(:missions)
+      .select('assos.*, COUNT(missions.id) as total_mission')
+      .group('assos.id')
+      .search_by_all(params[:query])
+      .reorder('total_mission DESC')
+      .limit(20)
     else
-      @assos = Asso.limit(20)
-      @markers = create_map_markers(@assos)
+      @assos = Asso.left_joins(:missions)
+      .select('assos.*, COUNT(missions.id) as total_mission')
+      .group('assos.id')
+      .order('total_mission DESC')
+      .limit(20)
     end
+
+    @markers = create_map_markers(@assos)
   end
 
   def show
@@ -24,13 +33,14 @@ class AssosController < ApplicationController
   end
 
   private
+
   def create_map_markers(assos)
     assos.map do |asso|
       {
+        id: asso.id,
         lat: asso.latitude,
         lng: asso.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { asso: asso }),
-        image_url: helpers.asset_url('location.svg')
+        infoWindow: render_to_string(partial: "info_window", locals: { asso: asso })
       }
     end
   end

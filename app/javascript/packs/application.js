@@ -18,6 +18,9 @@ require("channels")
 
 import { initMapbox } from '../plugins/init_mapbox';
 import { like } from '../components/like';
+import { initCards } from '../plugins/init_cards';
+import { initMissionCardHover } from '../other/mission-card';
+
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -31,10 +34,11 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
+  like();
+  initCards();
 
-  // Call your functions here, e.g:
-  // initSelect2();
-  initMapbox();
-  like()
-//
+  initMissionCardHover()
+
+  setTimeout(initMapbox, 200)
+
 })

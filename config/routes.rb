@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :assos, only: :index
-
-  resources :assos do
+  get 'search', to: 'pages#search'
+  resources :assos, only: [:index, :show] do
     resources :missions, only: [:show, :new, :create, :delete, :index]
   end
 
+
   resources :users
 
-  resources :missions, only: :index do
+  resources :missions, only: [:index, :show] do
     resources :favorites, only: [] do
       collection do
         get :toggle_favorite
@@ -23,6 +23,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :favorites
 
+  og:title
+  og:description
+  og:type
+  og:url
+  og:image
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,33 +1,19 @@
 <div class="container max-height-100vh">
-  <div class="">
-    <h1>Mon Profil 🧑‍💻 </h1>
-    <%= image_tag('avatar.svg', class: "avatar_profil") %>
-    <p> <strong>Margaux Gaudriot</strong></p>
-    <p> <%= @user.email %> </p>
-    <p> 21 rue des capucins 69001 Lyon</p>
-    <p> 06 84 03 05 83</p>
-    <a> Modifier mes informations </a>
-  </div>
-  <div class="">
-    <h1> Mes favoris ⭐️ </h1>
-    <div class="cards col-12">
-      <% current_user.favorites_missions.each do |mission| %>
-        <div class="card mission_card" id="mission-<%= mission.id %>">
-          <h1><%= mission.asso.name.capitalize %></h1>
-          <h2><%= mission.title%></h2>
-          <p><%= mission.type_mission.capitalize %></p>
-          <%#<%= mission.date_mission %>
-          <h4><%= mission.dispo %><h4>
-          <h5><%= mission.lieu %></h5>
-          <%# <%= mission.web_scraper_start_url %>
-          <% if user_signed_in? %>
-            <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'user_profile' %>
-          <% end %>
-         <a href="mailto:pierre.thomas9@orange.fr?subject = Feedback&amp;body = Message" target="_blank" class="btn-blue">Contact me</a>
-        </div>
-      <% end %>
+  <div class="card-profil">
+    <div class="profil-image">
+      <img src="https://ca.slack-edge.com/T02NE0241-U01KJ5YC57U-b66fe5f15aaf-512" style="height: 200px; border-radius: 32px" alt="Margaux Gaudriot" />
+    </div>
+      <h1> <strong>Margaux Gaudriot</strong></h1>
+     <div class="card-profil-info">
+      <p><em><i class="fas fa-envelope-square"></i> <%= @user.email %> </em></p>
+      <p><em><i class="fas fa-map-marker-alt"></i> 21 rue des capucins 69001 Lyon</em></p>
+      <p><em><i class="fas fa-phone-alt"></i> 06 84 03 05 83</em></p>
+    </div>
+    <div class="card-profil-description">
+      <h1><strong> Biographie</strong></h1>
+      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, facilis atque! Eius tempora labore inventore fugit dolores, maiores perspiciatis ipsum voluptatibus, eaque, cum nostrum nobis, porro. Eum odio laudantium neque?
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, earum! Quaerat, perferendis qui itaque a vitae. Architecto unde dignissimos natus distinctio iusto molestias doloribus magnam ut temporibus perspiciatis. Dicta, magnam.
+      </p>
     </div>
   </div>
 </div>
-
-

@@ -43,25 +43,30 @@
 .home_banner h1 {
   font-size: 55px;
   margin-bottom: 25px;
-  }
+}
 
-
-  .home_banner h2 {
+.home_banner h2 {
   margin-bottom: 25px;
-    }
+}
 
 .home_banner {
    margin-bottom: 20px;
-  //  position: absolute ;
 }
 
 .row {
-  position: relative ;
+  // position: relative ;
 }
 
 .img_preview {
   width: 95%;
   margin-left: 25px;
   margin-left: 25px;
-  position: absolute;
+  // position: absolute;
+}
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
 }
