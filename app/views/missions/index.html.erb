@@ -1,19 +1,20 @@
+<div class="form-group col-12">
+  <h1>Rechercher une mission</h1>
+      <%= form_tag missions_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Trouver une mission 🔎"
+          %>
+          <%= submit_tag "Rechercher", class: "btn btn-primary " %>
+      <% end %>
+  </div>
 <div class="main-container">
   <div class="col-6">
-  <div class="form-group">
-    <h1>Rechercher une mission</h1>
-        <%= form_tag missions_path, method: :get do %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Trouver une mission 🔎"
-            %>
-            <%= submit_tag "Rechercher", class: "btn btn-primary " %>
-        <% end %>
-    </div>
-  <div class="cards" >
+   <div class="cards side-container" id="mission-cards">
     <% @missions.each do |mission| %>
-      <div class="card mission_card" id="mission-<%= mission.id %>">
+      <div class="card mission-card" id="mission-<%= mission.id%>">
+       <%= content_tag "div style=display:none; id=mission#{mission.id}-data", mission.asso.to_json%>
           <%= link_to mission_path(mission) do%>
               <h1><%= mission.title%></h1>
               <h2><%= mission.asso.name.capitalize%></h2>
@@ -28,7 +29,11 @@
     <% end %>
   </div>
 </div>
-<div class="col-6">
-coucou
-</div>
+  <div  class="col-6">
+    <div class="displayasso">
+      <div class="assoimgbg">
+        <%= image_tag "5278.jpg", class: "img_preview", id:'placeholder' %>
+        </div>
+    </div>
+  </div>
 </div>

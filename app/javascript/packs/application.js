@@ -19,6 +19,7 @@ require("channels")
 import { initMapbox } from '../plugins/init_mapbox';
 import { like } from '../components/like';
 import { initCards } from '../plugins/init_cards';
+import { initMissionCardHover } from '../other/mission-card';
 
 
 // ----------------------------------------------------
@@ -35,5 +36,9 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   like();
   initCards();
+
+  initMissionCardHover()
+
   setTimeout(initMapbox, 200)
+
 })
