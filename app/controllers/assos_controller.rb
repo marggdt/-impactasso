@@ -9,13 +9,13 @@ class AssosController < ApplicationController
       .group('assos.id')
       .search_by_all(params[:query])
       .reorder('total_mission DESC')
-      .limit(100)
+      .limit(20)
     else
       @assos = Asso.left_joins(:missions)
       .select('assos.*, COUNT(missions.id) as total_mission')
       .group('assos.id')
       .order('total_mission DESC')
-      .limit(100)
+      .limit(20)
     end
 
     @markers = create_map_markers(@assos)
