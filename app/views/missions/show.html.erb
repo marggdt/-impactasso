@@ -3,13 +3,14 @@
 <div class="main-container">
 <div class="show-card col-12 col-lg-12">
       <h2><%= @mission.title %></h2>
-      <li> <strong>Lieu :</strong> <%= @mission.lieu %></li>
-      <li> <strong>Disponibilitée demandée :</strong> <%= @mission.dispo %></li>
-      <li> <strong>Type de mission :</strong> <%= @mission.type_mission %></li>
-      <li> <strong>date de mission :</strong> <%= @mission.date_mission %></li>
+      <li class="li-none"> <strong>Lieu :</strong> <%= @mission.lieu %></li>
+      <li class="li-none"> <strong>Disponibilitée demandée :</strong> <%= @mission.dispo %></li>
+      <li class="li-none"> <strong>Type de mission :</strong> <%= @mission.type_mission %></li>
+      <li class="li-none"> <strong>date de mission :</strong> <%= @mission.date_mission %></li>
+      <div class="d-flex justify-content-between align-items-center">
       <% if current_user %>
 	     <%= render "missions/toggle_favorite", mission: @mission, user: current_user, from: 'mission_show' %>
-      <a href="mailto:pierre.thomas9@orange.fr?subject=%20Participation%20à%20une%20mission%20associative&body=Monsieur,%0D%0A%0D%0AJ'ai%20la%20volonté%20d'aller%20à%20la%20reoncontre%20de%20nouvelles%20personnes%20et%20de%20m'engager%20dans%20le%20but%20d'aider%20les%20gens.%0D%0A%0D%0ACordialement" target="_blank" class="btn-blue">Contact me</a>
+      <a href="mailto:pierre.thomas9@orange.fr?subject=%20Participation%20à%20une%20mission%20associative&body=Monsieur,%0D%0A%0D%0AJ'ai%20la%20volonté%20d'aller%20à%20la%20reoncontre%20de%20nouvelles%20personnes%20et%20de%20m'engager%20dans%20le%20but%20d'aider%20les%20gens.%0D%0A%0D%0ACordialement" target="_blank" class="btn btn-success">Contact me</a>
       <% end %>
 </div>
 </div>
