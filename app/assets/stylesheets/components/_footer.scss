@@ -3,34 +3,32 @@
   bottom:0;
   width:100%;
   text-align: center;
-  height:50px;
-  position: fixed;
+  padding: 2rem 0;
 }
 
 .footer-links {
   text-align: center;
-  background: black;
+  justify-content: space-between;
 
 }
 
 .footer-links a {
-  justify-content: space-between;
+  justify-content: space-evenly;
   color: white;
-  opacity: 0.15;
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
   text-align: center;
-  background: black;
 
 }
 
 
 .footer ul {
-list-style:none;
-text-align: center;
+  list-style:none;
+  text-align: center;
   background: black;
-
+  display: flex;
+  margin-bottom: 0;
 }
 
 .footer a {
