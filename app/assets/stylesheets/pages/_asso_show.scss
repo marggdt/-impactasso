@@ -1,3 +1,35 @@
+.call-to-action {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  width: 60%;
+}
+
+.asso-container {
+  margin:20px 0px 20px 20px;
+}
+
+.btn-width {
+  width: 60px;
+}
+
+.flexasso {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.missions-container {
+  margin: 0 auto;
+  width: 1200px;
+  text-align:center;
+}
+
+.asso-title {
+  text-align: center;
+  margin-top: 16px;
+}
+
 .show-card {
   padding: 25px;
   margin: 15px;
@@ -33,7 +65,12 @@
     width: 35px;
 }
 
+.side-container h6 {
+  text-align: center;
+  font-size: 30px;
+}
 #contact-button {
   margin-bottom: 16px;
 }
+
 

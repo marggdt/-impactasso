@@ -1,39 +1,50 @@
-<div class="main-container">
-
-      <div class="show-card col-6">
-          <%= image_svg(@asso) %>
-          <h1 class="text-center"><%= @asso.name.capitalize %></h1>             
-
-            <p><%= @asso.description %></p>
-            <h2><%= @asso.address.upcase %> , <%= @asso.zipcode%> - <%= @asso.city.upcase%></h2>
-          <button class="btn btn-success" id="contact-button"> contacter </button>
-            <div id="map"
-              style="width: 100%; height: 200px;"
-              data-markers="<%= @marker.to_json %>"
-              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-              data-image-selected="<%= image_url('pin_selected.svg') %>"
-              data-image-unselected="<%= image_url('pin_unselected.svg') %>">
-            </div>
-        </div>
-
-      <div class="col-6">
-          <div class="side-container">
-          <h6>Missions mises en ligne par <%= @asso.name.capitalize %></h6>
-          <% if @missions_around_me.to_a.empty? %>
-            <p> Il semblerait que cette association n'ai pas publié de mission pour le moment ! 🕵️</p>
-            <% elsif @missions_around_me.each do |mission| %>
-
-            <div class="show-card">
-              <%= link_to mission_path(mission) do%>
-                  <h3><%= mission.title%></h3>
-                  <h2><%= mission.type_mission %></h2>
-                  <p><%= mission.dispo %><p>
-                  <h5><%= mission.lieu %></h5>
-              </div>
-              <% end %>
-            <% end %>
-          <% end %>
-      </div>
-
+<div class="flexasso">
+  <div class="asso-container col-6">
+    <div>
+      <h1><%= @asso.name.capitalize %></h1>
+      <h2><%= @asso.address.upcase %> , <%= @asso.zipcode%> - <%= @asso.city.upcase%></h2>
     </div>
- </div>
+    <div>
+      <p><%= @asso.description %></p>
+    </div>
+    <div class="call-to-action">
+      <button class="btn btn-success"> contacter </button>
+      <%= image_svg(@asso) %>
+    </div>
+  </div>
+  <div class="col-6">
+    <div id="map"
+      style="width: 100%; height: 200px;"
+      data-markers="<%= @marker.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-image-selected="<%= image_url('pin_selected.svg') %>"
+      data-image-unselected="<%= image_url('pin_unselected.svg') %>">
+    </div>
+
+  </div>
+</div>
+
+<div class="container fav">
+  <div class="card-favorite">
+    <h2 class="asso-title">Missions mises en ligne par <%= @asso.name.capitalize %></h2>
+    <% if @missions_around_me.to_a.empty? %>
+      <p> Il semblerait que cette association n'ai pas publié de mission pour le moment ! 🕵️</p>
+
+    <% else %>
+      <div class="missions-cards">
+        <% @missions_around_me.each do |mission| %>
+          <%= link_to mission_path(mission) do%>
+            <div  class="card mission-card">
+              <div class="mission_card" id="mission-<%= mission.id %>">
+                <h1><%= mission.title%></h1>
+                <h5><%= mission.lieu %></h5>
+                <h4><%= mission.asso.name.capitalize %></h4>
+                <p><%= mission.type_mission %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
