@@ -25,10 +25,5 @@ Rails.application.routes.draw do
 
   resources :favorites
 
-  og:title
-  og:description
-  og:type
-  og:url
-  og:image
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
