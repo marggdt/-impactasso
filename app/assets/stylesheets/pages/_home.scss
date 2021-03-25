@@ -72,7 +72,7 @@
   padding: 8px 24px;
   background-color: white;
   color: black;
-  text-decoration: underline;
+  text-decoration: none;
 }
 .selector:checked + label {
   color:white !important;
@@ -89,4 +89,14 @@
 
 .search-card {
   align-items: center;
+}
+
+#category-select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#query:focus {
+  outline: none;
+  box-shadow: none;
 }
