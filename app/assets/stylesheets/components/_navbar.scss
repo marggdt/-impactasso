@@ -20,11 +20,17 @@
   cursor: pointer;
 }
 
+.nav-item {
+  width: 200px;
+  text-align: center;
+}
+
 .nav-link a {
   font-size: 14px;
   color: white;
   font-weight: 300 ;
 }
+
 .connected-link {
   color: white;
 }
