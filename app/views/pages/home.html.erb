@@ -4,14 +4,14 @@
       <div class="col-lg-6">
       <h1>Impact'Asso</h1>
       <h4>Agis facilement pour des causes qui te tiennent à coeur !</h4>
-        <div class="form-group">
+        <div class="form-group search-card">
           <div class="group">
-            <h5>Je recherche : </h5>
             <%= form_tag search_path, method: :get do %>
-              <label for="asso">Associations</label>
-              <input type="radio" name="kind" value="assos" id="defaultCheck1" checked="">
-              <label for="mission">Missions</label>
-              <input type="radio" name="kind" value="missions" id="mission">
+            <h5>Je recherche : </h5>
+                <input class="selector" type="radio" name="kind" value="assos" id="asso" checked="">
+                <label for="asso">Associations</label>
+                <input class="selector" type="radio" name="kind" value="missions" id="mission">
+                <label for="mission">Missions</label>
               </div>
             <div class="group">
               <div class="form-group input-text d-flex">
