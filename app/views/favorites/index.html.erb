@@ -1,22 +1,39 @@
-<div class="container max-height-100vh">
-  <div class="card-favortie-missions">
-      <h1> Mes favoris ⭐️ </h1>
-      <div class="cards col-12">
-        <% current_user.favorites_missions.each do |mission| %>
-          <div class="card mission_card" id="mission-<%= mission.id %>">
-            <h1><%= mission.asso.name.capitalize %></h1>
-            <h2><%= mission.title%></h2>
-            <p><%= mission.type_mission.capitalize %></p>
-            <%#<%= mission.date_mission %>
-            <h4><%= mission.dispo %><h4>
-            <h5><%= mission.lieu %></h5>
-            <%# <%= mission.web_scraper_start_url %>
-            <% if user_signed_in? %>
-              <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'user_favorites' %>
-            <% end %>
-          <a href="mailto:pierre.thomas9@orange.fr?subject=%20Participation%20à%20une%20mission%20associative&body=Monsieur,%0D%0A%0D%0AJ'ai%20la%20volonté%20d'aller%20à%20la%20reoncontre%20de%20nouvelles%20personnes%20et%20de%20m'engager%20dans%20le%20but%20d'aider%20les%20gens.%0D%0A%0D%0ACordialement" target="_blank" class="btn-blue">Contact me</a>
+<div class="container fav">
+  <div class="card-favorite">
+      <div class="niveau">
+        <div class="titre">
+        <h1> Mon tableau de bord</h1>
+        </div>
+        <h4>Débutant </h3>
+          <div class="jauge">
+            <div class="skills progress">10%</div>
           </div>
-        <% end %>
+
+        <div class="badges flexbox">
+          <h5>Bravo ! Tu as ajouté ton premier favoris !  </h5>
+            <%=image_tag('first.svg', class: "svg_img") %>
+        </div>
       </div>
-    </div>
+
+      <div class="missions-cards">
+        <% current_user.favorites_missions.each do |mission| %>
+          <div  class="card mission-card">
+            <div class="mission_card" id="mission-<%= mission.id %>">
+                <% if user_signed_in? %>
+                <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'user_favorites' %>
+                <% end %>
+              <h1><%= mission.title%></h1>
+              <h5><%= mission.lieu %></h5>
+              <h4><%= mission.asso.name.capitalize %></h4>
+              <p><%= mission.type_mission %></p>
+              <%# <h4><%= mission.dispo %>
+              </div>
+              <div class="d-flex justify-content-between">
+                <a href="mailto:asso@orange.fr?subject=%20Participation%20à%20la%20mission%20N°1982&" target="_blank" class="btn btn-success">Contacter l'Asso</a>
+                <a href="#" target="_blank" class="btn btn-primary">Mission réalisée !</a>
+                </div>
+              </div>
+             <% end %>
+      </div>
+  </div>
 </div>

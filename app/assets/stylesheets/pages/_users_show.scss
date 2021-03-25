@@ -4,24 +4,14 @@
   padding-top: 50px;
 }
 
-.card-profil h1 {
-}
-
 .profil-image {
-  border-radius: 100px;
+  border-radius: 5px;
 }
-
-
 
 .card-profil-info p {
   text-align: center;
   font-size: 15px;
-  justify-content: space-evenly;
 }
-
-.card-profil-description p {
-}
-
 
 .card-profil-description h1 {
   font-size: 30px;
@@ -35,7 +25,38 @@
   margin-bottom: 60px;
 }
 
-.card-favortie-missions h1 {
-  text-align: center;
-  margin-top: 60px
+
+.jauge {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 50px;
+}
+
+.skills {
+    text-align: right;
+    // padding-top: 10px;
+    // padding-bottom: 10px;
+    color: white;
+    border-radius: 50px;
+    padding: 10px;
+
+
+}
+.progress {
+    width: 10%;
+    background-color: #2AC489;
+    // border-radius: 50px;
+    height: 20px;
+}
+
+.badges {
+  margin: 50px;
+}
+
+.niveau {
+  margin: 30px;
+}
+
+.btn-success {
+    width: 45%;
 }
