@@ -8,8 +8,8 @@
 }
 
 .home_banner h3 {
-  text-align: right;
-  margin-bottom: 30px;
+  text-align: left;
+  margin-bottom: 24px;
 }
 
 .home_banner h4 {
@@ -91,6 +91,14 @@
   align-items: center;
 }
 
+.group {
+  margin-bottom: 16px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
 #category-select:focus {
   outline: none;
   box-shadow: none;
@@ -99,4 +107,8 @@
 #query:focus {
   outline: none;
   box-shadow: none;
+}
+
+#btn-home {
+  background-color:#2ac489 ;
 }
