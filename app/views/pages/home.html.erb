@@ -36,7 +36,7 @@
                   <h5>À : </h5>
                   <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Ville" %>
                 </div>
-                <%= submit_tag "Rechercher", class: "btn btn-primary ", data: { disable_with: false }  %>
+                <%= submit_tag "Rechercher", class: "btn btn-primary ", id: "btn-home", data: { disable_with: false }   %>
                 <% end %>
               </div>
             </div>
