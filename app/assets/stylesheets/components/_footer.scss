@@ -9,7 +9,6 @@
 .footer-links {
   text-align: center;
   justify-content: space-between;
-
 }
 
 .footer-links a {
@@ -19,7 +18,6 @@
   font-size: 24px;
   padding: 0px 10px;
   text-align: center;
-
 }
 
 
@@ -29,13 +27,17 @@
   background: black;
   display: flex;
   margin-bottom: 0;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .footer a {
   color: white;
+  text-align: center;
 }
 
 .li :hover {
   font-weight: bold;
   color: #2ac489;
+  text-align: center;
 }
