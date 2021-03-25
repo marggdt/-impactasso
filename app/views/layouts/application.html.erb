@@ -26,7 +26,10 @@
     <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+
+    <div class="flex-grow">
       <%= yield %>
+    </div>
      <%= render 'shared/footer' %>
 
   </body>
