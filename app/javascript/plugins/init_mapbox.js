@@ -23,7 +23,7 @@ const updateMarkerSelected = (assoId) => {
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 50, duration: 0 });
+  map.fitBounds(bounds, { padding: 70, maxZoom: 80, duration: 0 });
 };
 
 const addMarkersToMap = (map, markers) => {

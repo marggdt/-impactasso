@@ -4,6 +4,7 @@
       <div class="col-lg-6">
       <h1>Impact'Asso</h1>
       <h4>Agis facilement pour des causes qui te tiennent à coeur !</h4>
+
         <div class="form-group search-card">
           <div class="group">
             <%= form_tag search_path, method: :get do %>
@@ -13,6 +14,7 @@
                 <input class="selector" type="radio" name="kind" value="missions" id="mission">
                 <label for="mission">Missions</label>
               </div>
+
             <div class="group">
               <div class="form-group input-text d-flex">
                   <h5>Dans le domaine de : </h5>
@@ -35,7 +37,7 @@
                   <h5>À : </h5>
                   <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Ville" %>
                 </div>
-                <%= submit_tag "Rechercher", class: "btn btn-primary " %>
+                <%= submit_tag "Rechercher", class: "btn btn-primary ", data: { disable_with: false }  %>
                 <% end %>
               </div>
             </div>
