@@ -59,3 +59,33 @@
 .text h2 {
   font-size: 40px;
 }
+
+.selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.selector + label {
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 8px 24px;
+  background-color: white;
+  color: black;
+  text-decoration: underline;
+}
+.selector:checked + label {
+  color:white !important;
+  background: black;
+  border: none;
+  text-decoration: none;
+}
+
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-card {
+  align-items: center;
+}
