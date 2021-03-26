@@ -30,6 +30,7 @@
   width: 100%;
   background-color: #ddd;
   border-radius: 50px;
+  margin-bottom: 1rem;
 }
 
 .skills {
@@ -50,7 +51,12 @@
 }
 
 .badges {
-  margin: 50px;
+  margin: 50px 0;
+}
+
+.gros {
+  width: 80px;
+  height: 80px;
 }
 
 .niveau {
