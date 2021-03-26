@@ -1,29 +1,34 @@
 .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   background: black;
   width:100%;
-  text-align: center;
   padding: 2rem 0;
   margin-top: 30px;
 }
 
+
 .footer-links {
-  text-align: center;
-  justify-content: space-between;
+  margin-right: 400px;
+}
+
+.footer-list {
+  display: flex;
 }
 
 .footer-links a {
-  justify-content: space-evenly;
   color: white;
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
-  text-align: center;
+  margin-right: 10px;
 }
 
 
 .footer ul {
   list-style:none;
-  text-align: center;
   background: black;
   display: flex;
   margin-bottom: 0;
@@ -33,11 +38,10 @@
 
 .footer a {
   color: white;
-  text-align: center;
 }
 
 .li :hover {
   font-weight: bold;
   color: #2ac489;
-  text-align: center;
 }
+
