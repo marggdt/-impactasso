@@ -15,6 +15,8 @@ class FavoritesController < ApplicationController
       redirect_to favorites_path
     elsif params[:from] == 'mission_show'
       redirect_to mission_path(@mission)
+    elsif params[:from] == 'asso_show'
+      redirect_to asso_path(@mission.asso)
     else
       redirect_to missions_path(query: params[:query])
     end
