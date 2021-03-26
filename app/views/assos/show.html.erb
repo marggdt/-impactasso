@@ -23,7 +23,6 @@
 
   </div>
 </div>
-
 <div class="container fav">
   <div class="card-favorite">
     <h2 class="asso-title">Missions mises en ligne par <%= @asso.name.capitalize %></h2>
@@ -33,16 +32,23 @@
     <% else %>
       <div class="missions-cards">
         <% @missions_around_me.each do |mission| %>
-          <%= link_to mission_path(mission) do%>
+
             <div  class="card mission-card">
-              <div class="mission_card" id="mission-<%= mission.id %>">
-                <h1><%= mission.title%></h1>
-                <h5><%= mission.lieu %></h5>
-                <h4><%= mission.asso.name.capitalize %></h4>
-                <p><%= mission.type_mission %></p>
-              </div>
+              <%= link_to mission_path(mission) do %>
+                <div class="mission_card" id="mission-<%= mission.id %>">
+
+                  <h1><%= mission.title%></h1>
+                  <h5><%= mission.lieu %></h5>
+                  <h4><%= mission.asso.name.capitalize %></h4>
+                  <p><%= mission.type_mission %></p>
+                  <% if user_signed_in? %>
+                  <%= render "missions/toggle_favorite", mission: mission, user: current_user, from: 'asso_show' %>
+                  <% end %>
+
+                </div>
+              <% end %>
             </div>
-          <% end %>
+
         <% end %>
       </div>
     <% end %>
