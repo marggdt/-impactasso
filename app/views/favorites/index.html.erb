@@ -2,18 +2,32 @@
 <div class="container fav">
   <div class="card-favorite">
       <div class="niveau">
-        <div class="titre">
-        <h1> Mon tableau de bord</h1>
+        <div class="titre w-100">
+        <h1 class="text-muted"> Mon tableau de bord</h1>
+         <div class="badges d-flex flex-column justify-content-center align-items-center">
+          <h4>Bravo ! Tu as ajouté ton premier favoris !  </h4>
+            <%=image_tag('firstgreen.svg', class: "svg_img gros") %>
         </div>
-        <h4>Débutant </h3>
+
+        </div>
+        <div class="text">
+          <h4>Niveau 1/5 </h3>
+          <p class="text-muted">Réalise ta première mission pour passer à l'étape suivante ! </p>
+        </div>
           <div class="jauge">
             <div class="skills progress">10%</div>
           </div>
 
-        <div class="badges flexbox">
-          <h5>Bravo ! Tu as ajouté ton premier favoris !  </h5>
-            <%=image_tag('first.svg', class: "svg_img") %>
+
+
+        <div class="  flexbox justify-content-between">
+            <%=image_tag('firstgreen.svg', class: "svg_img") %>
+            <%=image_tag('2.svg', class: "svg_img") %>
+            <%=image_tag('5.svg', class: "svg_img") %>
+            <%=image_tag('10.svg', class: "svg_img") %>
+            <%=image_tag('15.svg', class: "svg_img") %>
         </div>
+
       </div>
 
       <div class="missions-cards">
